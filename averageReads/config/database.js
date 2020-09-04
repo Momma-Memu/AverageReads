@@ -1,4 +1,3 @@
-
 const config = require("./index");
 
 const db = config.db;
