@@ -1,4 +1,7 @@
--1  Books
+# Main Features
+
+
+[]1  Books
     a-  Details/Author/Genre/Publisher
     b-  Organization by book info
     c-  Image/description/about the author
@@ -7,12 +10,12 @@
         -a  Take advantage of API pricing data
         -b  Maybe a link to external purchasing option
 
--2  BookShelves feature
+[]2  BookShelves feature
     -a  Will read
     -b  Have read
     -c  Currently reading/amount read? percentage?
     
--3  Reviews feature
+[]3  Reviews feature
     -a  shrek rating system EX: 5/5 shreks or 3.5 shreks.
     -b  maybe if the rating is bad it has a, "get out of my swamp" feature.
 
