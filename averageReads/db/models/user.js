@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING.BINARY,
       allowNull: false,
     },
-    booksId: DataTypes.ARRAY
+    booksId: DataTypes.ARRAY.INTEGER
   }, {});
   User.associate = function (models) {
     // associations can be defined here

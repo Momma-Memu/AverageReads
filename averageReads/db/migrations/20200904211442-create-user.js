@@ -24,7 +24,7 @@ module.exports = {
       },
       booksId: {
         allowNull: false,
-        type: Sequelize.ARRAY,
+        type: Sequelize.ARRAY.INTEGER,
         references: { model: 'Books' }
 
       },
