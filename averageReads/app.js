@@ -1,7 +1,7 @@
 const express = require("express");
 const morgan = require("morgan");
 const { environment } = require('./config');
-
+const cors = require('cors');
 // TODO: Import routes
 // const {router: indexRouter} = require('./routes/index');
 // const {router: tweetsRouter } = require('./routes/tweets');
@@ -12,10 +12,18 @@ const app = express();
 app.use(morgan("dev"));
 app.use(express.json());
 
+//cors 
+app.use(cors({ origin: 'http://localhost:4000' }));
+
+
 // TODO: set up routes
 // app.use("/", indexRouter);
 // app.use("/tweets", tweetsRouter);
 // app.use('/users', usersRouter)
+
+//Populate DB Route
+const dbPopulateRouter = require('./routes/db-populate');
+app.use('/db-populate', dbPopulateRouter);
 
 // Catch unhandled requests and forward to error handler.
 app.use((req, res, next) => {

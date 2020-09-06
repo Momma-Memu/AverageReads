@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
     },
     rating: {
-      type: DataTypes.NUMERIC[3, 2],
+      type: DataTypes.NUMERIC(3, 2),
       allowNull: false,
     },
     description: {
