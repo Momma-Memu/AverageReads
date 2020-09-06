@@ -32,10 +32,12 @@ router.get('/', asyncHandler(async (req, res) => {
             const book = xhr.responseText;
             //console.log(book)
             //only accepts books with average rating between 2.00 - 3.99
-            //if (book.match(/<average_rating>[23].[0-9][0-9]<\/average_rating>/)) {
-            //send book XML to client front end to be parsed into JS Object
-            res.json({ book });
-            // }
+            if (book.match(/<average_rating>[23].[0-9][0-9]<\/average_rating>/)) {
+                //send book XML to client front end to be parsed into JS Object
+                res.json({ book });
+            } else {
+                res.json({});
+            }
         }
     };
 }));
@@ -48,10 +50,14 @@ router.post('/', asyncHandler(async (req, res) => {
         //destructure book from body
         const { book } = req.body;
         //checks that data exists + grabs relevant data
-        if (book.GoodreadsResponse.book.authors.author.name['#text'] && typeof book.GoodreadsResponse.book.authors.author.name['#text'] === 'string') {
-            var author = book.GoodreadsResponse.book.authors.author.name['#text'];
+        if (Array.isArray(book.GoodreadsResponse.book.authors.author)) {
+            var author = book.GoodreadsResponse.book.authors.author[0].name['#text'];
         } else {
-            var author = '';
+            if (book.GoodreadsResponse.book.authors.author.name['#text'] && typeof book.GoodreadsResponse.book.authors.author.name['#text'] === 'string') {
+                var author = book.GoodreadsResponse.book.authors.author.name['#text'];
+            } else {
+                var author = '';
+            }
         }
         if ((book.GoodreadsResponse.book.title['#text'] && typeof book.GoodreadsResponse.book.title['#text'] === 'string') || (book.GoodreadsResponse.book.work.original_title['#text'] && typeof book.GoodreadsResponse.book.work.original_title['#text'] === 'string')) {
             var title = book.GoodreadsResponse.book.title['#text'];
