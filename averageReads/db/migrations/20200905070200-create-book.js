@@ -9,33 +9,35 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       author: {
+        type: Sequelize.STRING(150),
         allowNull: false,
-        type: Sequelize.STRING(125)
       },
       rating: {
+        type: Sequelize.NUMERIC[3, 2],
         allowNull: false,
-        type: Sequelize.NUMERIC(3, 2)
       },
       description: {
+        type: Sequelize.TEXT,
         allowNull: false,
-        type: Sequelize.TEXT
+        unique: true,
       },
       published: {
+        type: Sequelize.DATE,
         allowNull: false,
-        type: Sequelize.DATE
       },
       publisher: {
+        type: Sequelize.STRING(255),
         allowNull: false,
-        type: Sequelize.STRING(125)
       },
       image: {
-        allowNull: false,
         type: Sequelize.STRING(255),
-        unique: true
+        allowNull: false,
+        unique: true,
       },
       title: {
+        type: Sequelize.STRING(255),
         allowNull: false,
-        type: Sequelize.STRING(255)
+        unique: true,
       },
       createdAt: {
         allowNull: false,
