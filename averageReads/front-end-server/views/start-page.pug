@@ -9,14 +9,26 @@ html(lang="en")
     body
         include navbar.pug
         section.section
-            div.tile.is-ancestor
-                .tile.is-12.is-vertical.is-parent
-                    .tile.is-child.box
-                        p.title Books from DB
-            div.tile.is-ancestor
-                .tile
-                    div.tile.is-parent
+            div.container
+                div.tile.is-ancestor
+                    .tile.is-12.is-vertical.is-parent
                         .tile.is-child.box
-                            p.title Welcome bros
-                        .tile.is-child.box
-                            p.title quotes I guess
+                            p.title Books from DB
+                            div.tile.box.is-2
+                                p stuffs
+            div.container
+                div.tile.is-ancestor
+                    .tile
+                        div.tile.is-parent
+                            .tile.is-child.is-4.box
+                                p.title Welcome bros
+                            .tile.is-child.is-8.box
+                                p.title quotes I guess
+            .container
+                .tile.is-ancestor
+                    .tile
+                        .tile.is-parent
+                            .tile.is-child.box
+                                p.title Unpublished
+
+    include footer.pug
