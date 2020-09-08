@@ -70,6 +70,16 @@
 - Book details
   - /:id/book?
 
+/ - start page
+  - /books
+    - result of 50 books
+    - search functionality
+    - /books/:id
+      - shows individual book w/ reviews, bookshelf operations
+  - /users/username
+    - /users/username(or id)/bookshelf
+
+
 Roles:
 UX Lead - Dan, (THE MAN) Black
 
