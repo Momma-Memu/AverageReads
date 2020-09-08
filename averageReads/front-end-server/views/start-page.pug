@@ -3,8 +3,20 @@ html(lang="en")
     head
         meta(charset="UTF-8")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        link(rel="stylesheet", type="text/css" href="/style.css")
         link(rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css")
         title Welcome | Averagereads
     body
         include navbar.pug
-        div.tile.is-ancestor
+        section.section
+            div.tile.is-ancestor
+                .tile.is-12.is-vertical.is-parent
+                    .tile.is-child.box
+                        p.title Books from DB
+            div.tile.is-ancestor
+                .tile
+                    div.tile.is-parent
+                        .tile.is-child.box
+                            p.title Welcome bros
+                        .tile.is-child.box
+                            p.title quotes I guess

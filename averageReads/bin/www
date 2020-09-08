@@ -17,5 +17,3 @@ db.sequelize.authenticate()
         console.log('Database connection failure.');
         console.error(err);
     });
-
-app.listen(port, () => console.log(`Listening on port ${port}...`));

@@ -4,7 +4,7 @@ const { environment } = require('./config');
 const cors = require('cors');
 // TODO: Import routes
 // const {router: indexRouter} = require('./routes/index');
-// const {router: tweetsRouter } = require('./routes/tweets');
+const {router: booksRouter } = require('./routes/books');
 // const usersRouter = require('./routes/users');
 const app = express();
 
@@ -12,13 +12,13 @@ const app = express();
 app.use(morgan("dev"));
 app.use(express.json());
 
-//cors 
+//cors
 app.use(cors({ origin: 'http://localhost:4000' }));
 
 
 // TODO: set up routes
 // app.use("/", indexRouter);
-// app.use("/tweets", tweetsRouter);
+app.use("/books", booksRouter);
 // app.use('/users', usersRouter)
 
 //Populate DB Route
