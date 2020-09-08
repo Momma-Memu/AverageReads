@@ -116,7 +116,7 @@ router.get('/list-books', asyncHandler(async (req, res, next) => {
     console.log(books);
     books.forEach(book => {
         fs.open('books-data.txt', 'a', function (e, id) {
-            fs.write(id, JSON.stringify(book) + "\n", null, 'utf8', function () {
+            fs.write(id, JSON.stringify(book) + ",\n", null, 'utf8', function () {
                 fs.close(id, function () {
                     console.log('file is updated');
                 });
