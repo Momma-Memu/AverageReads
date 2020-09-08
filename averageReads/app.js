@@ -5,7 +5,7 @@ const cors = require('cors');
 // TODO: Import routes
 // const {router: indexRouter} = require('./routes/index');
 const {router: booksRouter } = require('./routes/books');
-// const usersRouter = require('./routes/users');
+const {router: myBooksRouter} = require('./routes/bookshelf');
 const app = express();
 
 
@@ -19,7 +19,7 @@ app.use(cors({ origin: 'http://localhost:4000' }));
 // TODO: set up routes
 // app.use("/", indexRouter);
 app.use("/books", booksRouter);
-// app.use('/users', usersRouter)
+app.use('/mybooks', myBooksRouter)
 
 //Populate DB Route
 const dbPopulateRouter = require('./routes/db-populate');
