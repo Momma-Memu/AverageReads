@@ -4,7 +4,7 @@
 //with optional limit (useful for frontpage slider or for suggestions)
 const db = require("./averageReads/db/models");
 
-async function getBooksBy(param = 'title', ascOrDesc = 'ASC', numberOfBooks = Infinity) {
+async function getBooksBy(param = 'title', ascOrDesc = 'ASC', numberOfBooks = Infinity, numberWords) {
     //wrap database query in try catch block in case there's an error
     try {
         const books = await db.Book.findAll(
@@ -17,7 +17,8 @@ async function getBooksBy(param = 'title', ascOrDesc = 'ASC', numberOfBooks = In
             const newBook = {};
             newBook.title = book.title;
             newBook.author = book.author;
-            newBook.description = book.description.split(' ').slice(0, 15).join(' ');
+            newBook.description = book.description.split(' ').slice(0, numberWords).join(' ');
+            newBook.image = book.image;
             return newBook;
         });
 
@@ -63,8 +64,8 @@ async function getUsersBooks(userId, wantsToRead, haveRead) {
         const books = await db.Bookshelf.findAll({
             where: {
                 userId,
-                wantsToRead: wantsToRead,
-                haveRead: haveRead,
+                wantsToRead,
+                haveRead,
             },
             include: 'Books',
         });
@@ -74,3 +75,34 @@ async function getUsersBooks(userId, wantsToRead, haveRead) {
 }
 
 //finds books that match specific criteria
+
+async function getBooksBy(param = 'title', ascOrDesc = 'ASC', numberOfBooks = Infinity) {
+
+    try {
+        const books = await db.Book.findAll(
+            {
+                where: {
+                    [param]: param,
+                },
+                order: [[`${param}`, `${ascOrDesc}`]],
+                limit: numberOfBooks,
+            });
+
+        // const relevantBooksInfo = books.map(book => {
+        //     const newBook = {};
+        //     newBook.title = book.title;
+        //     newBook.author = book.author;
+        //     newBook.description = book.description.split(' ').slice(0, 15).join(' ');
+        //     return newBook;
+        // });
+
+        // //render pug page
+        // //relevantBooksInfo is an array of books with relevant information to be displayed on list of books
+        // //show on table (or however results are displayed)
+
+        // // title          author           first 15 words of description
+
+    } catch (err) {
+        next(err);
+    }
+}
