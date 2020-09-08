@@ -1,5 +1,6 @@
 const express = require('express');
 const db = require('../db/models');
+const fs = require('fs');
 
 //Require XMLHttpRequest module from node
 const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
@@ -108,6 +109,22 @@ router.post('/', asyncHandler(async (req, res) => {
     } catch (err) {
         console.log(err);
     }
+}));
+
+router.get('/list-books', asyncHandler(async (req, res, next) => {
+    const books = await db.Book.findAll();
+    console.log(books);
+    books.forEach(book => {
+        fs.open('books-data.txt', 'a', function (e, id) {
+            fs.write(id, JSON.stringify(book) + "\n", null, 'utf8', function () {
+                fs.close(id, function () {
+                    console.log('file is updated');
+                });
+            });
+        });
+    });
+
+    res.send('ok');
 }));
 
 module.exports = router;

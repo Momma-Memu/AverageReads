@@ -21,7 +21,6 @@ app.get('/db-populate', (req, res) => {
   res.render('db-populate');
 })
 
-
 // Define a port and start listening for connections.
 const port = 4000;
 
