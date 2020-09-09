@@ -5,15 +5,8 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 lerna-debug.log*
-<<<<<<< HEAD
-
 # Diagnostic reports (https://nodejs.org/api/report.html)
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
-
-=======
-# Diagnostic reports (https://nodejs.org/api/report.html)
-report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
->>>>>>> e2b8ba459fc503882dd5cb689cfb822a3c2bbbe7
 # Runtime data
 pids
 *.pid
@@ -94,8 +87,3 @@ dist
 node_modules/
 .env
 __MACOSX/
-<<<<<<< HEAD
-
-
-=======
->>>>>>> e2b8ba459fc503882dd5cb689cfb822a3c2bbbe7
