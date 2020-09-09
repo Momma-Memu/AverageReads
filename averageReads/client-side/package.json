@@ -16,7 +16,11 @@
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.17.1",
+<<<<<<< HEAD
     "local-storage": "^2.0.0",
+=======
+    "node-fetch": "^2.6.1",
+>>>>>>> f74bb9b36e2da9bebf72b0e6947bc612926bd46a
     "pug": "^3.0.0"
   }
 }

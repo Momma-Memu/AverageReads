@@ -1,16 +1,23 @@
 footer.footer
-    .content.has-text-centered
-        p
-            strong averageReads
-            p was created by Dan Black, Miah Barnes, Jony Almeida and John Matthews for a project @ appAcademy
-    section.section
-        div.container
-            div.tile.is-ancestor.is-4
+    p.has-text-centered
+        strong averageReads
+        p.has-text-centered was created by Dan Black, Miah Barnes, Jony Almeida and John Matthews for a project @ appAcademy
+    section.section.has-text-centered
+        div.container.has-text-centered
+            div.tile.is-ancestor.has-text-centered
                 div.tile.is-parent
-                    div.tile.is-child.box.button.is-1
-                div.tile.is-parent
-                    div.tile.is-child.box.button.is-1
-                div.tile.is-parent
-                    div.tile.is-child.box.button.is-1
-                div.tile.is-parent
-                    div.tile.is-child.box.button.is-1
+                    div.tile.is-child
+                        img(src="/images/appacademy.png" width="50" height="50")
+                        p appAcademy
+                                div.tile.is-parent
+                    div.tile.is-child
+                        img.thingy(src="/images/ghlogo.png" width="50" height="50")
+                        p GitHub Repo
+                                    div.tile.is-parent
+                    div.tile.is-child
+                        img.thingy(src="/images/goodreads.png" width="50" height="50")
+                        p goodreads
+                                    div.tile.is-parent
+                    div.tile.is-child
+                        img(src="/images/pug.png" width="50" height="50")
+                        p Pug Engines

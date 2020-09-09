@@ -5,32 +5,28 @@ html(lang="en")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
         link(rel="stylesheet", type="text/css" href="/style.css")
         link(rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css")
-        script(src="js/start-page.js")
         title Welcome | Averagereads
     body
         include navbar.pug
         section.section
-            div.container
-                div.tile.is-ancestor
-                    .tile.is-12.is-vertical.is-parent
+            div.container.box
+                p.title Books of the Week
+                div.tile.is-ancestor.is-vertical.is-12
+                    .tile.is-parent.box.has-text-centered
+                            each Book in books
+                                .tile.is-child
+                                        img(src=`${Book.image}` width="100" height="130")
+                                        //-p.has-text-weight-medium=Book.title
+                                        p.has-text-weight-light=Book.author
+                    div.tile.is-parent.box
                         .tile.is-child.box
-                            p.title Books from DB
-                            div.tile.box.is-2
-                                p stuffs
-            div.container
-                div.tile.is-ancestor
-                    .tile
-                        div.tile.is-parent
-                            .tile.is-child.is-4.box
-                                p.title Welcome bros
-                            .tile.is-child.is-8.box
-                                p.title quotes I guess
-            .container
-                .tile.is-ancestor
-                    .tile
-                        .tile.is-parent
-                            .tile.is-child.box
-                                p.title Unpublished
+                            p.title Welcome bros
+                        .tile.is-child.box
+                            p Quote of the day
+                            p=qod.quote
+                            p=`-${qod.author}`
+                    .tile.is-parent.box
+                        .tile.is-child
+                            p.title Unpublished
 
     include footer.pug
-    block content

@@ -1,0 +1,17 @@
+.navigations {
+    box-shadow: 0 4px 2px -2px gray;
+    background-color: beige;
+}
+
+body {
+    background-color: beige;
+}
+
+.thingy {
+    width: 50px;
+    height: 50px;
+}
+
+.footer {
+    padding-bottom: 10px;
+}
