@@ -3,8 +3,8 @@ const morgan = require("morgan");
 const cors = require("cors");
 const { ValidationError } = require("sequelize");
 const indexRouter = require("./routes/index");
-// const booksRouter = require("./routes/books");
-// const bookshelvesRouter = require("./routes/bookshelves");
+const {router: booksRouter } = require('./routes/books');
+const {router: myBooksRouter} = require('./routes/bookshelf');
 const { environment } = require("./config");
 
 const app = express();
@@ -18,8 +18,8 @@ const dbPopulateRouter = require('./routes/db-populate');
 
 app.use("/", indexRouter);
 app.use('/db-populate', dbPopulateRouter);
-// app.use("/books", booksRouter);
-// app.use("/mybooks", bookshelvesRouter);
+app.use("/books", booksRouter);
+app.use("/mybooks", myBooksRouter);
 
 // Catch unhandled requests and forward to error handler.
 app.use((req, res, next) => {

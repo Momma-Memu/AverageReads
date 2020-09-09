@@ -1,49 +1,49 @@
-const express = require("express");
-const morgan = require("morgan");
-const { environment } = require('./config');
-const cors = require('cors');
-// TODO: Import routes
-// const {router: indexRouter} = require('./routes/index');
-const {router: booksRouter } = require('./routes/books');
-const {router: myBooksRouter} = require('./routes/bookshelf');
-const app = express();
+// const express = require("express");
+// const morgan = require("morgan");
+// const { environment } = require('./config');
+// const cors = require('cors');
+// // TODO: Import routes
+// // const {router: indexRouter} = require('./routes/index');
+// const {router: booksRouter } = require('./routes/books');
+// const {router: myBooksRouter} = require('./routes/bookshelf');
+// const app = express();
 
 
-app.use(morgan("dev"));
-app.use(express.json());
+// app.use(morgan("dev"));
+// app.use(express.json());
 
-//cors
-app.use(cors({ origin: 'http://localhost:4000' }));
+// //cors
+// app.use(cors({ origin: 'http://localhost:4000' }));
 
 
-// TODO: set up routes
-// app.use("/", indexRouter);
-app.use("/books", booksRouter);
-app.use('/mybooks', myBooksRouter)
+// // TODO: set up routes
+// // app.use("/", indexRouter);
+// app.use("/books", booksRouter);
+// app.use('/mybooks', myBooksRouter)
 
-//Populate DB Route
-const dbPopulateRouter = require('./routes/db-populate');
-app.use('/db-populate', dbPopulateRouter);
+// //Populate DB Route
+// const dbPopulateRouter = require('./routes/db-populate');
+// app.use('/db-populate', dbPopulateRouter);
 
-// Catch unhandled requests and forward to error handler.
-app.use((req, res, next) => {
-  const err = new Error("The requested resource couldn't be found.");
-  err.status = 404;
-  next(err);
-});
+// // Catch unhandled requests and forward to error handler.
+// app.use((req, res, next) => {
+//   const err = new Error("The requested resource couldn't be found.");
+//   err.status = 404;
+//   next(err);
+// });
 
-// Custom error handlers.
+// // Custom error handlers.
 
-// Generic error handler.
-app.use((err, req, res, next) => {
-  res.status(err.status || 500);
-  const isProduction = environment === "production";
-  res.json({
-    title: err.title || "Server Error",
-    message: err.message,
-    errors: err.errors,
-    stack: isProduction ? null : err.stack,
-  });
-});
+// // Generic error handler.
+// app.use((err, req, res, next) => {
+//   res.status(err.status || 500);
+//   const isProduction = environment === "production";
+//   res.json({
+//     title: err.title || "Server Error",
+//     message: err.message,
+//     errors: err.errors,
+//     stack: isProduction ? null : err.stack,
+//   });
+// });
 
-module.exports = app;
+// module.exports = app;

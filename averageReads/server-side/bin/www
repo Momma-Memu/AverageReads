@@ -17,9 +17,3 @@ db.sequelize.authenticate()
         console.log('Database connection failure.');
         console.error(err);
     });
-<<<<<<< HEAD:averageReads/bin/www
-=======
-
-// app.listen(port, () => console.log(`Listening on port ${port}...`));
-// ^ caused error when listen was called a 2nd time
->>>>>>> 314ff2d8a2d235646d9b3f73d31d849fb9e0a593:averageReads/server-side/bin/www
