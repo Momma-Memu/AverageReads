@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+html(lang="en" style="background-image: url('images/depositphotos_9529877-stock-illustration-books-background.jpg')")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        link(rel="stylesheet", type="text/css" href="/style.css")
+        link(rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css")
+        script(src="js/start-page.js")
+        title Welcome | Averagereads
+    body
+        section.section
+            div.container
+                div.tile.is-ancestor
+                    .tile.is-12.is-vertical.is-parent
+                        .tile.is-child.box
+                               span
+                                    p.title(style="font-size: 4em") averagereads
+                               span A book for everyone
+        div(class="errors-container" style="text-align: center; font-size: 1.5em; background-color: white;")
+        section.section
+            div.container
+                div.tile.is-ancestor
+                    .tile.is-6.is-parent
+                        .tile.is-child.box
+                            div(class="log-in-container")
+                                h2(style="font-size: 2em; margin-bottom: 10%") Log In
+                                form(class="log-in-form")
+                                    include includes/auth-form-fields
+                                    button(class="button is-warning is-outlined is-fullwidth" type='submit') Log In
+                                    //- a(href='/sign-up') Don't have an account? Sign up here.
+                    .tile.is-6.is-parent
+                        .tile.is-child.box
+                            div(class="sign-up-container")
+                                h2(style="font-size: 2em; margin-bottom: 10%") Sign Up
+                                form(class="sign-up-form")
+                                    .field
+                                        label.label(for='username') Username
+                                        input#username.input(type='text' name='username' placeholder="Username")
+                                        include includes/auth-form-fields
+                                    button(class="button is-success is-outlined is-fullwidth" type='submit') Sign Up
+                                //- a(href='/log-in') Already have an account? Log in here.
+        script(type="module" src="js/log-in.js")
+        footer.footer.content.has-text-centered
+            p
+                strong averageReads
+            p was created by Dan Black, Miah Barnes, Jony Almeida and John Matthews for a project @ appAcademy
+        section.section
+            div.container
+                div.tile.is-ancestor.is-4
+                    div.tile.is-parent
+                        div.tile.is-child.box.button.is-1
+                    div.tile.is-parent
+                        div.tile.is-child.box.button.is-1
+                    div.tile.is-parent
+                        div.tile.is-child.box.button.is-1
+                    div.tile.is-parent
+                        div.tile.is-child.box.button.is-1

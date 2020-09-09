@@ -2,6 +2,7 @@ const express = require("express");
 const path = require("path");
 const cors = require('cors');
 const fetch = require('node-fetch')
+
 const app = express();
 
 app.set("view engine", "pug");
@@ -25,13 +26,8 @@ app.get("/home", asyncHandler(async(req, res) => {
   res.render("start-page", { books, qod });
 }));
 
-app.get("/log-in", (req, res) => {
-  res.render("log-in");
-});
-
-
-app.get("/sign-up", (req, res) => {
-  res.render("sign-up");
+app.get("/", (req, res) => {
+  res.render("homepage");
 });
 
 //DB Populate Route
