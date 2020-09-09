@@ -1,57 +1,81 @@
 'use strict';
 
+// updated bookids to use valid books in mydb
+
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.bulkInsert('Users', [
+    return queryInterface.bulkInsert('Bookshelves', [
       {
-        username: 'John Doe',
-        email: 'john@email.com',
-        hashedPassword: 'ajd39jd02f20j',
+        userId: 1,
+        bookId: 3,
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
-        username: 'Jonah Poe',
-        email: 'jonah@email.com',
-        hashedPassword: 'aasdjd39jd02f20j',
-        createdAt: new Date(),
-        updatedAt: new Date()
-      }, {
-        username: 'Gina Moe',
-        email: 'gina@email.com',
-        hashedPassword: 'a2e2jd39jd02f20j',
+        userId: 1,
+        bookId: 1,
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
-        username: 'Tine Toe',
-        email: 'tina@email.com',
-        hashedPassword: 'ajd3aw39jd02f20j',
+        userId: 1,
+        bookId: 5,
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
-        username: 'Malick Maloe',
-        email: 'malick@email.com',
-        hashedPassword: 'ajcdd39jd02f20j',
+        userId: 3,
+        bookId: 26,
         createdAt: new Date(),
         updatedAt: new Date()
-      }
+      },
+      {
+        userId: 3,
+        bookId: 4,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        userId: 3,
+        bookId: 12,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        userId: 4,
+        bookId: 5,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        userId: 4,
+        bookId: 28,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        userId: 5,
+        bookId: 17,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
     ], {});
 
     /*
       Add altering commands here.
       Return a promise to correctly handle asynchronicity.
+
+      Example:
       return queryInterface.bulkInsert('People', [{
         name: 'John Doe',
         isBetaMember: false
       }], {});
-      Example:
     */
   },
 
   down: (queryInterface, Sequelize) => {
-    return queryInterface.bulkDelete('Users', null, {});
+    return queryInterface.bulkDelete('Bookshelves', null, {});
+
     /*
       Add reverting commands here.
       Return a promise to correctly handle asynchronicity.
