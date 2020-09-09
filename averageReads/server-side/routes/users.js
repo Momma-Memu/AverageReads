@@ -43,11 +43,13 @@ router.post(
 router.post("/token", validateEmailAndPassword, asyncHandler(async (req, res) => {
     const { email, password } = req.body;
     console.log(email)
+    console.log(password)
     const user = await User.findOne({
         where: {
-            email,
+            email:email,
         },
     });
+    console.log('after query')
     console.log(user)
     if (!user || !user.validatePassword(password)) {
         const err = new Error("Login failed");

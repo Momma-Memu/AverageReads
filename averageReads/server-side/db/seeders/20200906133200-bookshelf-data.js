@@ -7,7 +7,7 @@ module.exports = {
     return queryInterface.bulkInsert('Bookshelves', [
       {
         userId: 1,
-        bookId: 3,
+        bookId: 88,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -19,19 +19,19 @@ module.exports = {
       },
       {
         userId: 1,
-        bookId: 5,
+        bookId: 16,
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
         userId: 3,
-        bookId: 26,
+        bookId: 126,
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
         userId: 3,
-        bookId: 4,
+        bookId: 104,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -43,7 +43,7 @@ module.exports = {
       },
       {
         userId: 4,
-        bookId: 5,
+        bookId: 81,
         createdAt: new Date(),
         updatedAt: new Date()
       },

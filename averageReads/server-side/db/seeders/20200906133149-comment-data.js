@@ -22,7 +22,7 @@ module.exports = {
       {
         message: `The best Lorem Ipsum Generator in all the sea! Heave this scurvy copyfiller fer yar next adventure and cajol yar clients into walking the plank with ev'ry layout! Configure above, then get yer pirate ipsum...own the high seas, arg!`,
         userId: 1,
-        bookId: 2,
+        bookId: 48,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -50,7 +50,7 @@ module.exports = {
       {
         message: 'Chandler jury mast haul wind flogging poop deck pillage Buccaneer Jack Tar Letter of Marque Pirate Round. Draught yo-ho-ho Shiver me timbers yardarm lad chase topgallant Brethren of the Coast doubloon man-of-war. Booty topsail Brethren of the Coast wherry keelhaul dead men tell no tales scourge of the seven seas square-rigged me walk the plank.',
         userId: 2,
-        bookId: 3,
+        bookId: 88,
         createdAt: new Date(),
         updatedAt: new Date()
       },
