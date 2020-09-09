@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-html(lang="en" style="background-image: url('images/depositphotos_9529877-stock-illustration-books-background.jpg')")
+html(lang="en")
     head
         meta(charset="UTF-8")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
         link(rel="stylesheet", type="text/css" href="/style.css")
+        link(rel="stylesheet", type="text/css" href="/homepage.css")
         link(rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css")
-        script(src="js/start-page.js")
         title Welcome | Averagereads
     body
         section.section
@@ -40,18 +40,4 @@ html(lang="en" style="background-image: url('images/depositphotos_9529877-stock-
                                     button(class="button is-success is-outlined is-fullwidth" type='submit') Sign Up
                                 //- a(href='/log-in') Already have an account? Log in here.
         script(type="module" src="js/log-in.js")
-        footer.footer.content.has-text-centered
-            p
-                strong averageReads
-            p was created by Dan Black, Miah Barnes, Jony Almeida and John Matthews for a project @ appAcademy
-        section.section
-            div.container
-                div.tile.is-ancestor.is-4
-                    div.tile.is-parent
-                        div.tile.is-child.box.button.is-1
-                    div.tile.is-parent
-                        div.tile.is-child.box.button.is-1
-                    div.tile.is-parent
-                        div.tile.is-child.box.button.is-1
-                    div.tile.is-parent
-                        div.tile.is-child.box.button.is-1
+        include footer.pug

@@ -1,18 +1,21 @@
 const express = require("express");
 const morgan = require("morgan");
-const cors = require("cors");
+const path = require("path");
 const { ValidationError } = require("sequelize");
-const indexRouter = require("./routes/index");
+const {router: indexRouter} = require("./routes/index");
 const {router: booksRouter } = require('./routes/books');
 const {router: myBooksRouter} = require('./routes/bookshelf');
 const usersRouter = require("./routes/users");
 const { environment } = require("./config");
 
+
 const app = express();
+app.set('view engine', 'pug');
+
+app.use(express.static(path.join(__dirname, "public")));
 
 app.use(morgan("dev"));
 app.use(express.json());
-app.use(cors({ origin: "http://localhost:4000" }));
 
 //Populate DB Route
 const dbPopulateRouter = require('./routes/db-populate');
