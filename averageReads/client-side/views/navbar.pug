@@ -1,0 +1,25 @@
+nav.navbar(role="navigation" aria-label="man navigation")
+            div.navbar-brand
+                a.navbar-item
+                    img(scr="https://i.imgur.com/9cjtbAA.jpg" width="112" height="28")
+                a.navbar-burger.burger(role="button" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample")
+                    span(aria-hidden="true")
+                    span(aria-hidden="true")
+                    span(aria-hidden="true")
+            div.navbar-menu(id="navbarBasicExample")
+                div.navbar-start
+                    a.navbar-item Home
+                    a.navbar-item My Books
+                    div.navbar-item.has-dropdown.is-hoverable
+                        a.navbar-link More
+                        div.navbar-dropdown
+                            a.navbar-item About Us
+                            a.navbar-item Our Mission
+                div.navbar-end
+                    div.navbar-item
+                        div.buttons
+                            a.button.is-primary
+                                strong Profile
+                            a.button.is-light
+                                strong Log Out
+script(src="js/dropdown.js")
