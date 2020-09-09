@@ -3,8 +3,9 @@ const morgan = require("morgan");
 const cors = require("cors");
 const { ValidationError } = require("sequelize");
 const indexRouter = require("./routes/index");
-// const booksRouter = require("./routes/books");
-// const bookshelvesRouter = require("./routes/bookshelves");
+const usersRouter = require("./routes/users");
+const booksRouter = require("./routes/books");
+const bookshelvesRouter = require("./routes/bookshelves");
 const { environment } = require("./config");
 
 const app = express();
@@ -18,6 +19,8 @@ const dbPopulateRouter = require('./routes/db-populate');
 
 app.use("/", indexRouter);
 app.use('/db-populate', dbPopulateRouter);
+
+app.use("/users", usersRouter);
 // app.use("/books", booksRouter);
 // app.use("/mybooks", bookshelvesRouter);
 
