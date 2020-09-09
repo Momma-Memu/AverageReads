@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // storage access_token in localStorage:
             localStorage.setItem("AVG_READS_ACCESS_TOKEN", token);
             localStorage.setItem("AVG_READS_CURRENT_USER_ID", id);
-            // window.location.href = "/";
+            window.location.href = "/";
 
         } catch (err) {
             handleErrors(err);

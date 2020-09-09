@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        link(rel="stylesheet", type="text/css" href="/style.css")
+        link(rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css")
+        title My Books | Averagereads
+        script(src="js/bookshelf.js")
+    body
+        include navbar.pug
+        section.section
+            div.container
+                div.tile.is-ancestor
+                    .tile.is-4.is-parent
+                        .tile.is-child.box
+                            p.title My Bookshelf
+                            div.tile.box.is-12.is-fullwidth
+                                p Reading
+                            div.tile.box.is-12.is-fullwidth   
+                                p Wants to read
+                            div.tile.box.is-12.is-fullwidth    
+                                p I have read
+                    .tile.is-8.is-parent
+                        .tile.is-child.box
+                            p.title Want to read
+                            div.tile.box.is-2
+                                p stuffs
+                            div.tile.is-2
+                                p stuffs
+        footer.footer
+            .content.has-text-centered
+                p
+                    strong averageReads
+                    p was created by Dan Black, Miah Barnes, Jony Almeida and John Matthews for a project @ appAcademy
+            section.section
+                div.container
+                    div.tile.is-ancestor.is-4
+                        div.tile.is-parent
+                            div.tile.is-child.box.button.is-1
+                        div.tile.is-parent
+                            div.tile.is-child.box.button.is-1
+                        div.tile.is-parent
+                            div.tile.is-child.box.button.is-1
+                        div.tile.is-parent
+                            div.tile.is-child.box.button.is-1

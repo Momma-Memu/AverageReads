@@ -8,7 +8,7 @@ const fetchBooks = async () => {
         },
     });
     if (res.status === 401) {
-        // window.location.href = "/log-in";
+        window.location.href = "/";
         return;
     }
     const { mybooks } = await res.json();
