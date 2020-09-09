@@ -14,7 +14,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/log-in", (req, res) => {
-  res.render("log-in");
+  res.render("homepage");
 });
 
 
