@@ -7,10 +7,10 @@ const router = express.Router();
 const db = require("../db/models");
 
 const { User, Bookshelf } = db;
-const validatePassword = function (password) {
-    // because this is a model instance method, `this` is the user instance here:
-    return bcrypt.compareSync(password, this.hashedPassword.toString());
-}
+// function validatePassword (password) {
+//     // because this is a model instance method, `this` is the user instance here:
+//     return bcrypt.compareSync(password, hashedPassword.toString());
+// }
 const validateEmailAndPassword = [
     check("email")
         .exists({ checkFalsy: true })
@@ -48,6 +48,7 @@ router.post("/token", validateEmailAndPassword, asyncHandler(async (req, res) =>
         where: {
             email:email,
         },
+
     });
     console.log('after query')
     console.log(user)
@@ -64,16 +65,16 @@ router.post("/token", validateEmailAndPassword, asyncHandler(async (req, res) =>
 })
 );
 
-router.get("/mybooks", requireAuth, asyncHandler(async (req, res, next) => {
+// router.get("/mybooks", requireAuth, asyncHandler(async (req, res, next) => {
 
-    const mybooks = await Bookshelf.findAll({
-        where: {
-            userId: req.params.id,
-            // parseint^
-        },
-    });
-    res.json({ mybooks });
-})
-);
+//     const mybooks = await Bookshelf.findAll({
+//         where: {
+//             userId: req.params.id,
+//             // parseint^
+//         },
+//     });
+//     res.json({ mybooks });
+// })
+// );
 
 module.exports = router;
