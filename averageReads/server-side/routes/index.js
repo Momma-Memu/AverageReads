@@ -30,6 +30,11 @@ router.get('/about-us', (req, res) => {
   res.render('about-us')
 })
 
+router.get('/our-mission', (req, res) => {
+    //placeholder for mission
+    res.send('our-mission')
+  })
+
 //bookshelf
 router.get('/mybooks', asyncHandler(async (req, res) => {
   console.log(req);

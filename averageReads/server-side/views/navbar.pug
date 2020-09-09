@@ -1,20 +1,20 @@
 nav.navbar.navigations(role="navigation" aria-label="man navigation")
             div.navbar-brand
                 a.navbar-item
-                    img(src="/images/logo-small.png"  width="120" height="42")
+                    img(src="/images/logo-small.png"  width="120" height="42" id="avgreadsimages")
                 a.navbar-burger.burger(role="button" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample")
                     span(aria-hidden="true")
                     span(aria-hidden="true")
                     span(aria-hidden="true")
             div.navbar-menu(id="navbarBasicExample")
                 div.navbar-start
-                    a.navbar-item Home
-                    a.navbar-item My Books
+                    a(id="home").navbar-item Home
+                    a(id="mybooks").navbar-item My Books
                     div.navbar-item.has-dropdown.is-hoverable
                         a.navbar-link More
                         div.navbar-dropdown
-                            a.navbar-item About Us
-                            a.navbar-item Our Mission
+                            a(id="aboutus").navbar-item About Us
+                            a(id="ourmission").navbar-item Our Mission
                 div.navbar-end
                     div.navbar-item
                         div.buttons
@@ -23,3 +23,4 @@ nav.navbar.navigations(role="navigation" aria-label="man navigation")
                             a.button.is-light
                                 strong Log Out
 script(src="js/dropdown.js")
+script(src="js/navbar.js")
