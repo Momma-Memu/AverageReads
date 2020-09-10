@@ -18,4 +18,8 @@ body {
 
 .botw{
     cursor: pointer;
+/* =============== Bookshelf ===================================== */
+
+.not-visible {
+    display: none !important;
 }

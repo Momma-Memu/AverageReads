@@ -6,40 +6,69 @@ const { requireAuth } = require("../auth");
 
 const db = require("../db/models");
 
-router.get("/:id", asyncHandler(async (req, res) => {
-    const userId = parseInt(req.params.id, 10);
+router.get("/", asyncHandler(async (req, res, next) => {
+    //const userId = parseInt(req.params.id, 10);
     try {
-        const books = await db.Bookshelf.findAll(
+        const booksReading = await db.Bookshelf.findAll(
             {
                 where: {
-                    userId
+                    userId: 3,
+                    reading: true
                 },
                 include: db.Book
-                // order: [[`${param}`, `${ascOrDesc}`]],
-                // limit: numberOfBooks,
+
             });
-        res.json({ books });
-        const relevantBooksInfo = books.map(book => {
+        const booksHaveRead = await db.Bookshelf.findAll(
+            {
+                where: {
+                    userId: 3,
+                    haveRead: true
+                },
+                include: db.Book
+
+            });
+        const booksWantsToRead = await db.Bookshelf.findAll(
+            {
+                where: {
+                    userId: 3,
+                    wantsToRead: true
+                },
+                include: db.Book
+            });
+
+        const br = booksReading.map(book => {
             const newBook = {};
-            newBook.title = book.title;
-            newBook.author = book.author;
-            newBook.description = book.description.split(' ').slice(0, numberWords).join(' ');
-            newBook.image = book.image;
+            newBook.title = book.Book.title;
+            newBook.author = book.Book.author;
+            newBook.description = book.Book.description.split(' ').slice(0, 15).join(' ');
+            newBook.image = book.Book.image;
             return newBook;
         });
 
-        //render pug page
-        //relevantBooksInfo is an array of books with relevant information to be displayed on list of books
-        //show on table (or however results are displayed)
+        const bhr = booksHaveRead.map(book => {
+            const newBook = {};
+            newBook.title = book.Book.title;
+            newBook.author = book.Book.author;
+            newBook.description = book.Book.description.split(' ').slice(0, 15).join(' ');
+            newBook.image = book.Book.image;
+            return newBook;
+        });
 
-        // title          author           first 15 words of description
+        const bwtr = booksWantsToRead.map(book => {
+            const newBook = {};
+            newBook.title = book.Book.title;
+            newBook.author = book.Book.author;
+            newBook.description = book.Book.description.split(' ').slice(0, 15).join(' ');
+            newBook.image = book.Book.image;
+            return newBook;
+        });
+
+        res.render('my-books', { br, bhr, bwtr });
 
     } catch (err) {
         next(err);
     }
 }));
-
-
 
 module.exports = {
     router
