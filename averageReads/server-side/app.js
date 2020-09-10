@@ -1,19 +1,20 @@
 const express = require("express");
 const morgan = require("morgan");
 const path = require("path");
+
 const { ValidationError } = require("sequelize");
-const {router: indexRouter} = require("./routes/index");
-const {router: booksRouter } = require('./routes/books');
-const {router: myBooksRouter} = require('./routes/bookshelf');
+const { router: indexRouter } = require("./routes/index");
+const { router: booksRouter } = require('./routes/books');
+const { router: myBooksRouter } = require('./routes/bookshelf');
 const usersRouter = require("./routes/users");
 const { environment } = require("./config");
 
+const db = require('./db/models')
 
 const app = express();
 app.set('view engine', 'pug');
 
 app.use(express.static(path.join(__dirname, "public")));
-
 app.use(morgan("dev"));
 app.use(express.json());
 

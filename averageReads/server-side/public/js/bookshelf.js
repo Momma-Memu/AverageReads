@@ -19,6 +19,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const haveRead = document.querySelector('#have-read');
     const wantsToRead = document.querySelector('#wants-to-read');
 
+    document.querySelector('.reading').classList.remove('not-visible');
+
     reading.addEventListener('click', () => {
         document.querySelector('.reading').classList.remove('not-visible');
         document.querySelector('.have-read').classList.add('not-visible');
