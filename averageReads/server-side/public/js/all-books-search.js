@@ -2,11 +2,10 @@
 document.addEventListener('DOMContentLoaded', () => {
     const details = document.querySelector("#list");
     details.addEventListener("click", async (e) => {
-        if (e.target.classList[e.target.classList.length - 1].match(/\d+/)) {
+        e.preventDefault();
+        if (e.target.classList[e.target.classList.length - 1].match(/^\w+\d+/)) {
             console.log(e.target.classList[e.target.classList.length - 1]);
-            window.location.href = `books/${e.target.classList[e.target.classList.length - 1]}`;
-        } else {
-            e.preventDefault();
+            window.location.href = `/books/${e.target.classList[e.target.classList.length - 1]}`;
         }
     });
 });
