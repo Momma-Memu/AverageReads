@@ -38,5 +38,13 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelector('.reading').classList.add('not-visible');
         document.querySelector('.have-read').classList.add('not-visible');
     });
-});
 
+    const details = document.querySelector("#event-listener");
+    details.addEventListener("click", async (e) => {
+        e.preventDefault();
+        if (e.target.classList[e.target.classList.length - 1].match(/^\w+\d+/)) {
+            console.log(e.target.classList[e.target.classList.length - 1]);
+            window.location.href = `/books/${e.target.classList[e.target.classList.length - 1]}`;
+        }
+    });
+});    

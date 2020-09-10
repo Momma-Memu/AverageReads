@@ -42,6 +42,7 @@ router.get("/:id", asyncHandler(async (req, res, next) => {
         console.log('okay')
         const br = booksReading.map(book => {
             const newBook = {};
+            newBook.id = book.Book.id;
             newBook.title = book.Book.title;
             newBook.author = book.Book.author;
             newBook.description = book.Book.description.split(' ').slice(0, 15).join(' ');
@@ -51,6 +52,7 @@ router.get("/:id", asyncHandler(async (req, res, next) => {
 
         const bhr = booksHaveRead.map(book => {
             const newBook = {};
+            newBook.id = book.Book.id;
             newBook.title = book.Book.title;
             newBook.author = book.Book.author;
             newBook.description = book.Book.description.split(' ').slice(0, 15).join(' ');
@@ -60,6 +62,7 @@ router.get("/:id", asyncHandler(async (req, res, next) => {
 
         const bwtr = booksWantsToRead.map(book => {
             const newBook = {};
+            newBook.id = book.Book.id;
             newBook.title = book.Book.title;
             newBook.author = book.Book.author;
             newBook.description = book.Book.description.split(' ').slice(0, 15).join(' ');

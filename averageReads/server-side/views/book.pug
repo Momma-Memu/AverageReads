@@ -11,8 +11,8 @@ html(lang="en")
         section.section
             div.container.box
                 p.title=book.title
-                div.tile.is-ancestor.has-text-centered
-                    div.tile.is-parent.has-text-centered.is-vertical.is-2.box
+                div.tile.is-ancestor
+                    div.tile.is-parent.has-text-centered.is-vertical.is-3
                         .tile.is-child.has-text-centered
                             img(src=`${book.image}` width="140" height="180")
                         .tile.is-child.has-text-centered
@@ -20,25 +20,31 @@ html(lang="en")
                             p=`Published: ${date}`
                             p=`Rating: ${book.rating}`
                             p.is-size-7=`Publisher: ${book.publisher}`
-                    div.tile.is-parent.has-text-centered.is-vertical.is-4.box
-                        .tile.is-child.has-text-centered
+                    div.tile.is-parent.is-vertical.is-9.has-text-centered
+                        .tile.is-child.is-centered
                             p=book.description
+                        div.tile.is-child.is-centered
+                            button.button.is-outlined.is-primary.mr-1 Want to Read
+                            button.button.is-outlined.is-danger.mr-1 Reading
+                            button.button.is-outlined.is-info.mr-1 Have Read
 
-        article(class="media")
-            figure(class="media-left")
 
-            div(class="media-content")
-                div(class="field")
-                p(class="control")
-                    textarea(id="userComment" class="textarea" placeholder="Write your review...")
 
-                nav(class="level")
-                div(class="level-left")
-                    div(class="level-item")
-                        a(id="submitButton" class="button is-info") Submit
+                include comments.pug
+                article(class="media")
+                    figure(class="media-left")
 
-        p(class="bookId").is-hidden=book.id
+                    div(class="media-content")
+                        div(class="field")
+                        p(class="control")
+                            textarea(id="userComment" class="textarea" placeholder="Write your review...")
 
-        include comments.pug
+                        nav(class="level")
+                        div(class="level-left")
+                            div(class="level-item")
+                                a(id="submitButton" class="button is-info") Submit
+
+                p(class="bookId").is-hidden=book.id
+
         include footer.pug
 script(src="js/comment.js")
