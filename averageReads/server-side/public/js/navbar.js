@@ -12,8 +12,9 @@ home.addEventListener('click', ()=> {
 
 //redirect for my books button on navbar
 const myBooks = document.getElementById('mybooks')
+const userId = localStorage.getItem('AVG_READS_CURRENT_USER_ID')
 myBooks.addEventListener('click', ()=> {
-    window.location.href = "/mybooks";
+    window.location.href = `/mybooks/${userId}`;
 })
 
 //redirect for about us button on navbar

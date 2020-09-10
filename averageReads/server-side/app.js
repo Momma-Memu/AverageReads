@@ -3,16 +3,10 @@ const morgan = require("morgan");
 const path = require("path");
 
 const { ValidationError } = require("sequelize");
-<<<<<<< HEAD
 const {router: indexRouter} = require("./routes/index");
 const {router: booksRouter } = require('./routes/books');
 const {router: myBooksRouter} = require('./routes/bookshelf');
 const {router: commentsRouter} = require('./routes/comments');
-=======
-const { router: indexRouter } = require("./routes/index");
-const { router: booksRouter } = require('./routes/books');
-const { router: myBooksRouter } = require('./routes/bookshelf');
->>>>>>> 21c1427068c2f57ae8b43064cb5b683b7fc6080c
 const { router: allBooksSearchRouter } = require('./routes/all-books');
 const usersRouter = require("./routes/users");
 const { environment } = require("./config");
