@@ -4,27 +4,30 @@ const path = require("path");
 const { ValidationError } = require("sequelize");
 const {router: indexRouter} = require("./routes/index");
 const {router: booksRouter } = require('./routes/books');
-const {router: myBooksRouter} = require('./routes/bookshelf');
+const { router: myBooksRouter } = require('./routes/bookshelf');
+const { router: allBooksSearchRouter } = require('./routes/all-books');
 const usersRouter = require("./routes/users");
 const { environment } = require("./config");
-
+const cors = require('cors');
 
 const app = express();
 app.set('view engine', 'pug');
 
 app.use(express.static(path.join(__dirname, "public")));
-
+app.use(cors({ origin: 'http://localhost:8080' }));
 app.use(morgan("dev"));
 app.use(express.json());
-
+app.use(express.urlencoded())
 //Populate DB Route
 const dbPopulateRouter = require('./routes/db-populate');
+const { urlencoded } = require("express");
 
 app.use("/", indexRouter);
 app.use('/db-populate', dbPopulateRouter);
 app.use("/books", booksRouter);
 app.use("/mybooks", myBooksRouter);
 app.use("/users", usersRouter);
+app.use('/search-books', allBooksSearchRouter);
 
 // Catch unhandled requests and forward to error handler.
 app.use((req, res, next) => {
