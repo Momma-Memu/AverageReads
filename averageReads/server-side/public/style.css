@@ -15,3 +15,9 @@ body {
 .footer {
     padding-bottom: 10px;
 }
+
+/* =============== Bookshelf ===================================== */
+
+.not-visible {
+    display: none !important;
+}
