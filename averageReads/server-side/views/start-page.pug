@@ -15,9 +15,10 @@ html(lang="en")
                     .tile.is-parent.box.has-text-centered
                             each Book in books
                                 .tile.is-child
-                                        img(src=`${Book.image}` width="100" height="130")
+                                        img(src=`${Book.image}` width="100" height="130" class="botw")
                                         //-p.has-text-weight-medium=Book.title
                                         p.has-text-weight-light=Book.author
+                                        p(class="botwId").is-hidden=Book.id
                     div.tile.is-parent.box
                         .tile.is-child.box
                             p.title Welcome bros
@@ -30,3 +31,4 @@ html(lang="en")
                             p.title Unpublished
 
     include footer.pug
+script(src="js/bookOfTheWeek.js")

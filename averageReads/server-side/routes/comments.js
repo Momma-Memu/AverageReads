@@ -7,9 +7,9 @@ const { requireAuth } = require("../auth");
 
 const db = require("../db/models");
 
-router.post("/", asyncHandler(async(req, res) => {
+// router.post("/:id/:bookId", asyncHandler(async(req, res) => {
 
-}))
+// }))
 
 module.exports = {
     router

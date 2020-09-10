@@ -12,6 +12,11 @@ router.get("/", asyncHandler(async(req, res) => {
     res.json(({ books }))
 }))
 
+router.get('/:id', asyncHandler(async(req, res)=> {
+    const bookId = req.params.id
+    res.send(`You are viewing book number ${bookId}`)
+}));
+
 module.exports = {
     router
 };
