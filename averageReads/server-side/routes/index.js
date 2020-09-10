@@ -8,10 +8,11 @@ const router = express.Router();
 
 router.get("/home", asyncHandler(async (req, res) => {
   const books = await db.Book.findAll({ limit: 6 })
+
   const data = await fetch('https://type.fit/api/quotes')
   const quote = await data.json()
   const qod = quote[Math.floor(Math.random() * 1000)]
-  console.log(qod)
+
   res.render("start-page", { books, qod });
 }));
 
