@@ -9,7 +9,6 @@ html(lang="en")
         script(src="js/bookshelf.js")
     body
         include navbar.pug
-        
         section.section
             div.container
                 div.tile.is-ancestor
@@ -49,7 +48,7 @@ html(lang="en")
                                         span= book.title
                                         span= book.author
                                         span= book.description
-                    .tile.is-8.is-parent.reading
+                    .tile.is-8.is-parent.reading.not-visible
                         .tile.is-child.box
                             p.title I'm reading
                                 each book in br

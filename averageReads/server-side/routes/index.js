@@ -35,12 +35,6 @@ router.get('/our-mission', (req, res) => {
   res.send('our-mission')
 })
 
-// //bookshelf
-// router.get('/mybooks', asyncHandler(async (req, res) => {
-//   console.log(req);
-//   res.render('bookshelf');
-// }));
-
 module.exports = {
   router
 }

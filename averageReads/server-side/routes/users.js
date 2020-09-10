@@ -45,7 +45,7 @@ router.post("/token", validateEmailAndPassword, asyncHandler(async (req, res) =>
 
     const user = await User.findOne({
         where: {
-            email:email,
+            email: email,
         },
 
     });
@@ -62,17 +62,5 @@ router.post("/token", validateEmailAndPassword, asyncHandler(async (req, res) =>
     res.json({ token, user: { id: user.id } });
 })
 );
-
-// router.get("/mybooks", requireAuth, asyncHandler(async (req, res, next) => {
-
-//     const mybooks = await Bookshelf.findAll({
-//         where: {
-//             userId: req.params.id,
-//             // parseint^
-//         },
-//     });
-//     res.json({ mybooks });
-// })
-// );
 
 module.exports = router;

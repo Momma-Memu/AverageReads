@@ -1,27 +1,31 @@
 const express = require('express');
-const router = express.Router();
+const path = require('path');
+
 const { check } = require("express-validator");
 const { asyncHandler, handleValidationErrors } = require("../utils");
-const { requireAuth } = require("../auth");
-
 const db = require("../db/models");
 
-router.get("/", asyncHandler(async (req, res, next) => {
-    //const userId = parseInt(req.params.id, 10);
+const router = express.Router();
+
+router.use(express.static(path.join("public")));
+
+router.get("/:id", asyncHandler(async (req, res, next) => {
+
+    const userId = req.params.id;
+
     try {
         const booksReading = await db.Bookshelf.findAll(
             {
                 where: {
-                    userId: 3,
+                    userId,
                     reading: true
                 },
                 include: db.Book
-
             });
         const booksHaveRead = await db.Bookshelf.findAll(
             {
                 where: {
-                    userId: 3,
+                    userId,
                     haveRead: true
                 },
                 include: db.Book
@@ -30,12 +34,12 @@ router.get("/", asyncHandler(async (req, res, next) => {
         const booksWantsToRead = await db.Bookshelf.findAll(
             {
                 where: {
-                    userId: 3,
+                    userId,
                     wantsToRead: true
                 },
                 include: db.Book
             });
-
+        console.log('okay')
         const br = booksReading.map(book => {
             const newBook = {};
             newBook.title = book.Book.title;
