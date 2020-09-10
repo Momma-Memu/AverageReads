@@ -10,71 +10,75 @@ html(lang="en")
     body
         include navbar.pug
         section.section
-            div.container
-                div.tile.is-ancestor
-                    .tile.is-12.is-parent
-                        .tile.is-child.box
-                            p.title John Doe
-                            div.tile.box.is-4.is-fullwidth
-                                img(src="images/116343579_3469288363105231_7752106790805590091_o.jpg", alt="", style="height: 100px")
-        section.section
-            div.container
+            div.container.box
                 div.tile.is-ancestor(id="event-listener")
                     .tile.is-4.is-parent
-                        .tile.is-child.box
+                        .tile.is-child
                             p.title My Bookshelf
-                            div.tile.box.is-12.is-fullwidth
-                                p#reading 
-                                    a Reading
-                            div.tile.box.is-12.is-fullwidth   
-                                p#wants-to-read 
-                                    a Wants to read
-                            div.tile.box.is-12.is-fullwidth    
-                                p#have-read 
-                                    a I have read
+                            button.button.box.is-fullwidth#reading Reading
+                            button.button.box.is-fullwidth#wants-to-read Want to read
+                            button.button.box.is-fullwidth#have-read Completed
                     .tile.is-8.is-parent.wants-to-read.not-visible
-                        .tile.is-child.box
+                        .tile.is-child
                             p.title I want to read
                                 each Book in br
-                                    .tile.is-parent.box
-                                        div.tile.is-child.is-2
-                                            img(src=`${Book.image}` width="100" height="130" class="botw")
-                                        div.tile.is-child.is-4
-                                            div(style="margin-left: 5%") 
-                                                p.has-text-weight-medium=Book.title
-                                                p.has-text-weight-light=Book.author
-                                            div(style="margin-left: 5%")
-                                                button.button.is-danger(id=`details-btn` class=`${Book.id}` style="margin-top: 5%;") Details
-                                        .tile.is-child
-                                            p.has-text-weight-light=Book.description                             
+                                    div.tile.is-ancestor.box
+                                        .tile.is-parent.is-3
+                                            div.tile.is-child
+                                                img(src=`${Book.image}` width="100" height="130" class="botw")
+                                        .tile.is-parent.is-3
+                                            div.tile.is-child
+                                                div(style="margin-left: 5%")
+                                                    p.has-text-weight-medium=Book.title
+                                                    p.has-text-weight-light=Book.author
+                                        div.tile.is-parent.is-vertical
+                                            .tile.is-child
+                                                p.has-text-weight-light=Book.description
+                                            div.tile.is-child.field.has-addons
+                                                p.control
+                                                    button.button.is-danger(id=`details-btn` class=`${Book.id}`) Details
+                                                p.control
+                                                    button.button.is-warning Start Reading
                     .tile.is-8.is-parent.have-read.not-visible
-                        .tile.is-child.box
-                            p.title I have read
+                        .tile.is-child
+                            p.title Completed
                                 each Book in bhr
-                                    .tile.is-parent.box
-                                        div.tile.is-child.is-2
-                                            img(src=`${Book.image}` width="100" height="130" class="botw")
-                                        div.tile.is-child.is-4
-                                            div(style="margin-left: 5%") 
-                                                p.has-text-weight-medium=Book.title
-                                                p.has-text-weight-light=Book.author
-                                            div(style="margin-left: 5%")
-                                                button.button.is-danger(id=`details-btn` class=`${Book.id}` style="margin-top: 5%;") Details
-                                        .tile.is-child
-                                            p.has-text-weight-light=Book.description                             
+                                    div.tile.is-ancestor.box
+                                        .tile.is-parent.is-3
+                                            div.tile.is-child
+                                                img(src=`${Book.image}` width="100" height="130" class="botw")
+                                        .tile.is-parent.is-3
+                                            div.tile.is-child
+                                                div(style="margin-left: 5%")
+                                                    p.has-text-weight-medium=Book.title
+                                                    p.has-text-weight-light=Book.author
+                                        div.tile.is-parent.is-vertical
+                                            .tile.is-child
+                                                p.has-text-weight-light=Book.description
+                                            div.tile.is-child.field.has-addons
+                                                p.control
+                                                    button.button.is-danger(id=`details-btn` class=`${Book.id}`) Details
+                                                p.control
+                                                    button.button.is-warning Archive
                     .tile.is-8.is-parent.reading.not-visible
-                        .tile.is-child.box
+                        .tile.is-child
                             p.title I'm reading
                                 each Book in bwtr
-                                    .tile.is-parent.box
-                                        div.tile.is-child.is-2
-                                            img(src=`${Book.image}` width="100" height="130" class="botw")
-                                        div.tile.is-child.is-4
-                                            div(style="margin-left: 5%") 
-                                                p.has-text-weight-medium=Book.title
-                                                p.has-text-weight-light=Book.author
-                                            div(style="margin-left: 5%")
-                                                button.button.is-danger(id=`details-btn` class=`${Book.id}` style="margin-top: 5%;") Details
-                                        .tile.is-child
-                                            p.has-text-weight-light=Book.description                             
+                                    div.tile.is-ancestor.box
+                                        .tile.is-parent.is-3
+                                            div.tile.is-child
+                                                img(src=`${Book.image}` width="100" height="130" class="botw")
+                                        .tile.is-parent.is-3
+                                            div.tile.is-child
+                                                div(style="margin-left: 5%")
+                                                    p.has-text-weight-medium=Book.title
+                                                    p.has-text-weight-light=Book.author
+                                        div.tile.is-parent.is-vertical
+                                            .tile.is-child
+                                                p.has-text-weight-light=Book.description
+                                            div.tile.is-child.field.has-addons
+                                                p.control
+                                                    button.button.is-danger(id=`details-btn` class=`${Book.id}`) Details
+                                                p.control
+                                                    button.button.is-warning Completed
         include footer.pug
