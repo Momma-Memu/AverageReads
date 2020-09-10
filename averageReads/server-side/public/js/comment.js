@@ -1,13 +1,11 @@
-//submit for comments
-
 const bookId = document.querySelector('.bookId').innerHTML
 const submit = document.getElementById('submitButton')
-const userId = localStorage.getItem('AVG_READS_CURRENT_USER_ID')
+// const userId = localStorage.getItem('AVG_READS_CURRENT_USER_ID')
 
 submit.addEventListener('click', async() => {
-    const message = document.getElementById('userComment').value
-    console.log(message)
-    body = { message }
+    const textarea = document.getElementById('userComment')
+    const message = textarea.value
+    const body = { message }
     const response = await fetch(`http://localhost:8080/comment/${userId}/${bookId}`, {
         method: 'POST',
         body: JSON.stringify(body),
@@ -24,8 +22,9 @@ submit.addEventListener('click', async() => {
     <br>
     <p class="pb-3"> ${review.comment.message}</p>
     `
-    console.log(reviewHtml)
+
     const container = document.getElementById('review');
     container.innerHTML += reviewHtml
-
+    textarea.value = "";
+    console.log(message)
 });
