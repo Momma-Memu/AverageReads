@@ -20,14 +20,17 @@ html(lang="en")
                                 button.button.is-warning(type="submit" id="author-btn") Search
             div.container
                 .tile.is-ancestor
-                    .tile.is-parent.is-vertical.box
+                    .tile.is-parent.is-vertical.box(id="list")
                         each Book in bookResults
                             .tile.is-parent.box
                                 div.tile.is-child.is-2
                                     img(src=`${Book.image}` width="100" height="130" class="botw")
                                 div.tile.is-child.is-4
-                                    p.has-text-weight-medium=Book.title
-                                    p.has-text-weight-light=Book.author
+                                    div 
+                                        p.has-text-weight-medium=Book.title
+                                        p.has-text-weight-light=Book.author
+                                    div
+                                        button.button.is-danger(id=`details-btn` class=`${Book.id}` style="margin-top: 5%;") Details
                                 .tile.is-child
                                     p.has-text-weight-light=Book.description
         include footer.pug

@@ -14,6 +14,7 @@ router.get('/', asyncHandler(async (req, res) => {
 
     const bookResults = books.map(book => {
         const newBook = {};
+        newBook.id = book.id;
         newBook.title = book.title;
         newBook.author = book.author;
         newBook.description = `${book.description.split(' ').slice(0, 100).join(' ')}...`;
@@ -32,45 +33,29 @@ async function getBooksBy(search, ascOrDesc = 'ASC', next) {
                 order: [['title', `${ascOrDesc}`]],
                 where: {
                     [Op.or]: {
-                    'title': {
-                        [Op.iLike]: `%${search}%`,
-                    },
-                    'author': {
-                        [Op.iLike]: `%${search}%`
+                        'title': {
+                            [Op.iLike]: `%${search}%`,
+                        },
+                        'author': {
+                            [Op.iLike]: `%${search}%`
+                        }
                     }
                 }
-                }
             });
-
-        // const relevantBooksInfo = books.map(book => {
-        //     const newBook = {};
-        //     newBook.title = book.title;
-        //     newBook.author = book.author;
-        //     newBook.description = book.description.split(' ').slice(0, numberWords).join(' ');
-        //     newBook.image = book.image;
-        //     return newBook;
-        // });
-
-        //render pug page
-        //relevantBooksInfo is an array of books with relevant information to be displayed on list of books
-        //show on table (or however results are displayed)
-
-        // title          author           first 15 words of description
-
     } catch (err) {
         next(err);
     }
 }
 
-
 router.post('/', asyncHandler(async (req, res, next) => {
-console.log('asdasd')
+    console.log('asdasd')
     const { query } = req.body;
     console.log(req);
     const books = await getBooksBy(query, ascOrDesc = 'ASC', numberOfBooks = Infinity, next);
     console.log(books);
     const bookResults = books.map(book => {
         const newBook = {};
+        newBook.id = book.id;
         newBook.title = book.title;
         newBook.author = book.author;
         newBook.description = `${book.description.split(' ').slice(0, 100).join(' ')}...`;

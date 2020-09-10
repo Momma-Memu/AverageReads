@@ -1,44 +1,12 @@
 
-// document.addEventListener('DOMContentLoaded', () => {
-//     const searchTitle = document.querySelector("#title-btn");
-//     const searchAuthor = document.querySelector("#author-btn");
-//     const searchForm = document.querySelector('#search-form');
-
-//     searchTitle.addEventListener("click", async (e) => {
-//         // e.preventDefault();
-
-//         const formData = new FormData(searchForm);
-//         const searchQuery = formData.get("query");
-//         const searchOption = 'title';
-
-//         const body = { searchQuery, searchOption };
-//         console.log(body);
-//         const res = await fetch("http://localhost:8080/search-books", {
-//             method: "POST",
-//             body: JSON.stringify(body),
-//             headers: {
-//                 "Content-Type": "application/json",
-//             },
-//         });
-//     });
-
-//     searchAuthor.addEventListener("click", async (e) => {
-//         // e.preventDefault();
-//         const formData = new FormData(searchForm);
-//         const searchQuery = formData.get("query");
-//         const searchOption = 'author';
-
-//         const body = { searchQuery, searchOption };
-
-//         const res = await fetch("http://localhost:8080/search-books", {
-//             method: "POST",
-//             body: JSON.stringify(body),
-//             headers: {
-//                 "Content-Type": "application/json",
-//             },
-//         });
-
-//         const { bookResults } = await res.json();
-//         console.log('books:', bookResults);
-//     });
-// });
+document.addEventListener('DOMContentLoaded', () => {
+    const details = document.querySelector("#list");
+    details.addEventListener("click", async (e) => {
+        if (e.target.classList[e.target.classList.length - 1].match(/\d+/)) {
+            console.log(e.target.classList[e.target.classList.length - 1]);
+            window.location.href = `books/${e.target.classList[e.target.classList.length - 1]}`;
+        } else {
+            e.preventDefault();
+        }
+    });
+});
