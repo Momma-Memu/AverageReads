@@ -5,6 +5,7 @@ const { ValidationError } = require("sequelize");
 const {router: indexRouter} = require("./routes/index");
 const {router: booksRouter } = require('./routes/books');
 const {router: myBooksRouter} = require('./routes/bookshelf');
+const {router: commentsRouter} = require('./routes/comments');
 const usersRouter = require("./routes/users");
 const { environment } = require("./config");
 
@@ -25,6 +26,7 @@ app.use('/db-populate', dbPopulateRouter);
 app.use("/books", booksRouter);
 app.use("/mybooks", myBooksRouter);
 app.use("/users", usersRouter);
+app.use("/comment", commentsRouter);
 
 // Catch unhandled requests and forward to error handler.
 app.use((req, res, next) => {
