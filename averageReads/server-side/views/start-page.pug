@@ -12,24 +12,28 @@ html(lang="en")
         section.section
             div.container.box
                 p.title Books of the Week
-                div.tile.is-ancestor.is-vertical
-                    .tile.is-parent.has-text-centered
+                div.tile.is-ancestor.is-vertical.box
+                    .tile.is-parent
+                    .tile.is-parent.has-text-centered.stuuff
                         each Book in books
                             .tile.is-child
-                                img(src=`${Book.image}` width="100" height="130" class="botw")
+                                img(src=`${Book.image}` width="100" height="130" class="botw shdw")
                                 //-p.has-text-weight-medium=Book.title
                                 p.has-text-weight-light=Book.author
                                 p(class="botwId").is-hidden=Book.id
+                div.tile.is-ancestor
                     div.tile.is-parent
-                        .tile.is-child.is-6
+                        .tile.is-child.box
                             p.title Welcome to Averagereads
                             p.is-size-4 Averagereads was created by readers who are tired of seeing the same authors and publishers reach the front page of popular online bookstores like Amazon Kindle and Goodreads. It’s hard to find a great new story when you’ve already experienced the works of todays most popular authors. Averagereads is an attempt to solve two problems. One, is to allow readers to find under-marketed and even unpublished stories they may have never even heard of. Second, is to give exposure to the under-appreciated authors who are trying to break into the literary mainstream. Diamonds in the rough.
-                        .tile.is-child.is-6
+                    div.tile.is-parent
+                        .tile.is-child.box
                             p.title Quote of the day
                             p.is-size-4.pb-2=qod.text
                             p=`-${qod.author}`
+                div.tile.is-ancestor
                     div.tile.is-parent.is-centered
-                        .tile.is-child.is-6
+                        .tile.is-child.box
                             div.title Weather
                                 i(class="fas fa-sun").pl-4
                             p(id='city').is-size-4 Miami
@@ -39,8 +43,8 @@ html(lang="en")
                                 i(class="fas fa-wind" id="wind").is-size-4.pl-4
                             p.pb-6 Temperature:
                                 i(class="fas fa-temperature-high" id="temp").is-size-4.pl-4
-                        .tile.is-child
-                        .tile.is-child.is-6
+                    div.tile.is-parent.is-centered
+                        .tile.is-child.box
                             div.title Book News
                             a.is-size-5.h1(href="https://www.youtube.com/watch?v=n9xhJrPXop4&ab_channel=WarnerBros.Pictures") Dune adaptation Trailer Released!
                             div.embed-container

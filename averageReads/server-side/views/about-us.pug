@@ -8,72 +8,149 @@ html(lang="en")
         link(rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css")
         title About Us | Averagereads
     body
-    include navbar.pug
-    section.section
-        div.container.box
-            //- h1.title About Us
-            //- h2.title The Squad
-            div.tile.is-ancestor.is-vertical
-                .tile.is-parent
-                    .tile.is-child.is-4.box
-                        img(src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" width="400px")
-                    .tile.is-child.is-4
-                    .tile.is-child.box.is-4.is-right
-                        img(src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" width="400px")
-                .tile.is-parent
-                    .tile.is-child.is-4.box
-                        img(src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" width="400px")
-                    .tile.is-child.is-2
-                    .tile.is-child.box.is-4.is-right
-                        img(src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" width="400px")
-            div.tile.is-ancestor.is-vertical.box
-                .tile.is-parent
-                    p.title Project Rundown!
-                .tile.is-parent
+        include navbar.pug
+        section.section
+            div.container.box
+                //- h1.title About Us
+                //- h2.title The Squad
+                div.tile.is-ancestor.has-text-centered
+                    .tile.is-parent.has-text-centered
+                        .tile.is-child.box.has-text-centered
+                            figure.image.is-256x256
+                                img.is-rounded(src="images/dan.jpeg" width="200px")
+                            br
+                            p.is-size-5 Dan Black
+                            br
+                            p.has-text-justified Role: Full-Stack Dev
+                            p.has-text-justified Focus: Front-End UX/UI
+                            p.has-text-justified Favorite Book: Norweigan Wood by Haruki Murikami
+                    .tile.is-parent.has-text-centered
+                        .tile.is-child.box.has-text-centered
+                            figure.image.is-256x256
+                                img.is-rounded(src="images/john.jpeg" width="200px")
+                            br
+                            p.is-size-5 John Matthews
+                            br
+                            p.has-text-justified Role: Full-Stack Dev
+                            p.has-text-justified Focus: Login and Authentication
+                            p.has-text-justified Favorite Book: The Alchemist by Paulo Coelho
+                    .tile.is-parent.has-text-centered
+                        .tile.is-child.box
+                            figure.image.is-256x256
+                                img.is-rounded(src="images/jony.jpg" width="200px")
+                            br
+                            p.is-size-5 Jony Almeida Figueiredo
+                            br
+                            p.has-text-justified Role: Full-Stack Dev
+                            p.has-text-justified Focus: Database Design/Querying
+                            p.has-text-justified Favorite Book: Jitterbug Perfume by Tom Robbins
+                    .tile.is-parent.has-text-centered
+                        .tile.is-child.box.is-right
+                            figure.image.is-256x256
+                                img.is-rounded(src="images/miah.jpg" width="200px")
+                            br
+                            p.is-size-5 Miah Barnes
+                            br
+                            p.has-text-justified Role: Full-Stack Dev
+                            p.has-text-justified Focus: Express/Routing
+                            p.has-text-justified Favorite Book: The Hitchhikers Guide to the Galaxy by Douglas Adams
+                div.tile.is-ancestor.is-vertical.box.has-text-centered
+                    .tile.is-parent.has-text-centered
+                        .tile.is-child
+                            p.title Project Rundown!
+                    .tile.is-parent.has-text-centered
+                        .tile.is-child
                     p.title Objectives
-                    p.h1 Give users a way to explore a database of "average" books they may not have heard of using technoligies taught by appAcademy.
-                .tile.is-parent
+                    .tile.is-parent.has-text-centered
+                        .tile.is-child
+                            p.h1 Give users a way to explore a database of "average" books they may not have heard of using technoligies taught by appAcademy.
+                    .tile.is-parent.has-text-centered
+                        .tile.is-child
                     p.title Technologies
-                    div.tile.is-child
-                        ul
-                            li Javascript
-                            li HTML
-                            li CSS
-                            li Bulma Framework
-                    div.tile.is-child
-                        ul
-                            li PostgresSQL v12 RDBMS
-                            li Sequelize ORM
-                    .tile.is-child
-                        ul
-                            li NodeJS
-                            li Express
-                            li Heroku Deployment
-                    .tile.is-child
-                        ul
-                            li Pug View Engine
-                            li OAuth Authentication
-                            li Bcrypt Hashing
-                .tile.is-parent
+                    .tile.is-parent.has-text-centered
+                        div.tile.is-child
+                            p.h1.has-text-weight-semibold Languages
+                            ul
+                                li Javascript
+                                li HTML
+                                li CSS
+                                li Bulma Framework
+                        div.tile.is-child
+                            p.h1.has-text-weight-semibold Database
+                            ul
+                                li PostgresSQL v12 RDBMS
+                                li Sequelize ORM
+                        .tile.is-child
+                            p.h1.has-text-weight-semibold Server Side
+                            ul
+                                li NodeJS
+                                li Express
+                                li Heroku Deployment
+                        .tile.is-child
+                            p.h1.has-text-weight-semibold API's
+                            ul
+                                li Stromglass
+                                li OpenCage Geocoder
+                                li Type.Fit Quotes
+                        .tile.is-child
+                            p.h1.has-text-weight-semibold Miscellaneous
+                            ul
+                                li Pug View Engine
+                                li OAuth Authentication
+                                li Bcrypt Hashing
+                    .tile.is-parent.has-text-centered
+                        .tile.is-child
                     p.title Database Funtionality/Objectives
-                    ol
-                        li Store user information
-                        li Store book information
-                        li Allow users to store books in a personal Bookshelf
-                        li Store reviews specific to both Books and Users
-                        li Add new books to the database
-                        li Search database through the frontend with user-friendly UI
-                .tile.is-parent
+                    .tile.is-parent.has-text-centered
+                        .tile.is-child
+                            ul
+                                li 1. Store user information
+                                li 2. Store book information
+                                li 3. Allow users to store books in a personal Bookshelf
+                                li 4. Store reviews specific to both Books and Users
+                                li 5. Add new books to the database
+                                li 6. Search database through the frontend with user-friendly UI
+                    .tile.is-parent.has-text-centered
+                        .tile.is-child
                     p.title User Stories
-                    p.h1 User Stories help developers view their own product from the perspective of the consumer
-                    ul
-                        li As a user of averageReads webapp, I would like to create a personal collection of  books.
-                        li As a user of averageReads webapp, I would like search for books by author, ratings, book name.
-                        li As a user of averageReads webapp, I would like to register myself and have a profile page.
-                        li As a user of averageReads webapp, I would like to add new books to the database.
-                .tile.is-parent
+                    .tile.is-parent.is-vertical
+                        div.tile.is-child
+                            p.h1.has-text-weight-semibold User Stories help developers view their own product from the perspective of the consumer
+                        div.tile.is-child
+                            ul
+                                li As a user of averageReads webapp, I would like to create a personal collection of  books.
+                                li As a user of averageReads webapp, I would like search for books by author, ratings, book name.
+                                li As a user of averageReads webapp, I would like to register myself and have a profile page.
+                                li As a user of averageReads webapp, I would like to add new books to the database.
+                    .tile.is-parent.has-text-centered
+                        .tile.is-child
                     p.title Database Models
-                    div.tile.is-child
-                        p.h1 User Model
-                        ul
-                            Username
+                    .tile.is-parent
+                        div.tile.is-child
+                            p.h1.has-text-weight-semibold User Model
+                            ul
+                                li Username: string (20) / not null / unique
+                                li Email: string (125) / not null / unique
+                                li Hashed Password: binary string
+                        div.tile.is-child
+                            p.h1.has-text-weight-semibold Book Model
+                            ul
+                                li Title: string (255) / not null / unique
+                                li Author: string (150) / not null
+                                li Description: text / not null
+                                li Rating: numeric (3,2) / not null
+                                li Publisher: string (255) / not null
+                                li Published: date / not null
+                                li Image: string (255) / not null
+                        div.tile.is-child
+                            p.h1.has-text-weight-semibold Review Model
+                            ul
+                                li Message: text / not null
+                                li Book Id: integer / not null
+                                li User Id: integer / not null
+                        div.tile.is-child
+                            p.h1.has-text-weight-semibold Bookshelf Model
+                            ul
+                                li BookId: integer / not null
+                                li UserId: integer / not null
+        include footer.pug
