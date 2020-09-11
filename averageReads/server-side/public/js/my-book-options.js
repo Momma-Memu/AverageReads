@@ -18,13 +18,13 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     const options = await res.json();
     console.log(options);
-    if (options.reading) {
+    if (options.options.reading) {
         readingBtn.setAttribute('disabled', 'true');
     }
-    if (options.wantsToRead) {
+    if (options.options.wantsToRead) {
         wantToReadBtn.setAttribute('disabled', 'true');
     }
-    if (options.haveRead) {
+    if (options.options.haveRead) {
         haveReadBtn.setAttribute('disabled', 'true');
     }
     wantToReadBtn.addEventListener('click', async () => {
