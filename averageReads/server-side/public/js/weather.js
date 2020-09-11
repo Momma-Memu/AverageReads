@@ -4,7 +4,8 @@
 // async function domManipulate(){
 //     const cityDiv = document.getElementById('city');
 
-//     if(cityDiv.innerHTML !== 'City'){
+//     if(cityDiv.innerHTML.includes('In')){
+//         console.log('hey')
 //         return;
 //     }
 
@@ -76,7 +77,7 @@
 //     const parsedAdd = await addData.json();
 //     const address = parsedAdd.results[0].formatted.split(',')[1]
 
-//     cityDiv.innerHTML = address
+//     cityDiv.innerHTML = ` In ${address}`
 //     cloudDiv.innerHTML = ` ${cloud}% Coverage`
 //     windDiv.innerHTML = ` ${wind} mph`
 //     tempDiv.innerHTML = ` ${temp}`
