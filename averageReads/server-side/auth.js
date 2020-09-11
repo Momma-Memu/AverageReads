@@ -29,7 +29,7 @@ const restoreUser = (req, res, next) => {
     const { token } = req;
 
     if (!token) {
-        console.log("no token found via auth")
+        // console.log("no token found via auth")
         return next();
     }
 
