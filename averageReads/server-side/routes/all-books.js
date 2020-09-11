@@ -7,7 +7,7 @@ const { Op } = require("sequelize");
 
 const db = require("../db/models");
 
-router.use(requireAuth);
+
 
 router.get('/', asyncHandler(async (req, res) => {
     const books = await db.Book.findAll();
