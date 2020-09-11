@@ -17,7 +17,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
 
     const options = await res.json()
-    console.log(options);
     if (options.reading) readingBtn.setAttribute('disabled', 'true');
     if (options.wantsToRead) wantToReadBtn.setAttribute('disabled', 'true');
     if (options.haveRead) haveReadBtn.setAttribute('disabled', 'true');
