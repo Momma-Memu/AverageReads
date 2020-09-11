@@ -218,7 +218,8 @@ router.delete('/:id/destroy', asyncHandler(async (req, res) => {
 router.post('/:id/check-bookshelf', asyncHandler(async (req, res) => {
     const bookId = parseInt(req.params.id, 10);
     const { userId } = req.body;
-
+    console.log(bookId)
+    console.log(userId)
     //check if book already exists in user's collection
     const isBook = await db.Bookshelf.findOne({
         where: {
@@ -226,7 +227,7 @@ router.post('/:id/check-bookshelf', asyncHandler(async (req, res) => {
             userId
         }
     });
-
+    console.log(isBook)
     if (isBook) {
         var options = {
             haveRead: isBook.haveRead,
