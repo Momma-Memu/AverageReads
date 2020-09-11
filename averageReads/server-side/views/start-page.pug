@@ -11,32 +11,45 @@ html(lang="en")
         section.section
             div.container.box
                 p.title Books of the Week
-                div.tile.is-ancestor.is-vertical.is-12
+                div.tile.is-ancestor.is-vertical
                     .tile.is-parent.has-text-centered
-                            each Book in books
-                                .tile.is-child
-                                        img(src=`${Book.image}` width="100" height="130" class="botw")
-                                        //-p.has-text-weight-medium=Book.title
-                                        p.has-text-weight-light=Book.author
-                                        p(class="botwId").is-hidden=Book.id
+                        each Book in books
+                            .tile.is-child
+                                img(src=`${Book.image}` width="100" height="130" class="botw")
+                                //-p.has-text-weight-medium=Book.title
+                                p.has-text-weight-light=Book.author
+                                p(class="botwId").is-hidden=Book.id
                     div.tile.is-parent
-                        .tile.is-child
+                        .tile.is-child.is-6
                             p.title Welcome bros
-                        .tile.is-child.box
+                        .tile.is-child.is-6
                             p.title Quote of the day
                             p.is-size-4.pb-2=qod.text
                             p=`-${qod.author}`
-                    .tile.is-parent.box
-                        .tile.is-child
+                    div.tile.is-parent.is-centered
+                        .tile.is-child.is-6
                             div.title Weather
                                 i(class="fas fa-sun").pl-4
-                            p.is-size-4 City Title goes here
+                            p(id='city').is-size-4 City
                             p.pb-6.pt-4 Cloud coverage:
                                 i(class="fas fa-cloud" id="cloud").is-size-4.pl-4
                             p.pb-6 Wind Speed:
                                 i(class="fas fa-wind" id="wind").is-size-4.pl-4
                             p.pb-6 Temperature:
                                 i(class="fas fa-temperature-high" id="temp").is-size-4.pl-4
+                        .tile.is-child
+                        .tile.is-child.is-6
+                            div.title Book News
+                            a.is-size-5.h1(href="https://www.youtube.com/watch?v=n9xhJrPXop4&ab_channel=WarnerBros.Pictures") Dune adaptation Trailer Released!
+                            div.embed-container
+                                iframe(src='https://www.youtube.com/embed/n9xhJrPXop4' frameborder='0' allowfullscreen)
+                            p
+                            a.h1.is-size-5(href="https://vegoutmag.com/losangeles/news-article.php?id=437") The Tiny Chef Releases a New Book for All Ages
+                            div.embed-container
+                                img(src="https://vegoutmag.com/images/news/437.jpg")
+
+
+
 
 
     include footer.pug

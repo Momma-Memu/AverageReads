@@ -16,29 +16,44 @@ body {
     padding-bottom: 10px;
 }
 
-.botw{
+.botw {
     cursor: pointer;
 }
 
-.fa-sun{
+.fa-sun {
     color: rgb(194, 183, 28);
 }
 
-.fa-wind{
+.fa-wind {
     color: rgb(78, 128, 194);
 }
 
-.fa-temperature-high{
+.fa-temperature-high {
     color: rgb(158, 101, 101);
 }
 
-.fa-cloud{
+.fa-cloud {
     color: rgb(107, 107, 107);
 }
 
-
-    /* =============== Bookshelf ===================================== */
+/* =============== Bookshelf ===================================== */
 
 .not-visible {
     display: none !important;
+}
+
+.embed-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    max-width: 100%;
+}
+
+.embed-container iframe, .embed-container object, .embed-container embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
