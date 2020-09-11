@@ -23,17 +23,13 @@ html(lang="en")
                     div.tile.is-parent.is-vertical.is-9.has-text-centered
                         .tile.is-child.is-centered
                             p=book.description
-                        div.tile.is-child.is-centered
-                            button.button.is-outlined.is-primary.mr-1 Want to Read
-                            button.button.is-outlined.is-danger.mr-1 Reading
-                            button.button.is-outlined.is-info.mr-1 Have Read
-
-
-
+                        div.tile.is-child.is-centered(class=`get-book ${bookId}`)
+                            button.button.is-outlined.is-primary.mr-1.notification(id="want-to-read") Want to Read
+                            button.button.is-outlined.is-danger.mr-1(id="reading") Reading
+                            button.button.is-outlined.is-info.mr-1(id="have-read") Have Read
                 include comments.pug
                 article(class="media")
                     figure(class="media-left")
-
                     div(class="media-content")
                         div(class="field")
                         p(class="control")
@@ -48,3 +44,4 @@ html(lang="en")
 
         include footer.pug
 script(src="js/comment.js")
+script(src="js/my-book-options.js")

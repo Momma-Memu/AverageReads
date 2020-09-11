@@ -9,6 +9,18 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
+    reading: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+    },
+    haveRead: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+    },
+    wantsToRead: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+    },
   }, {});
   Bookshelf.associate = function (models) {
     // associations can be defined here
