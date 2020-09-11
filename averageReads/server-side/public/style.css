@@ -19,6 +19,24 @@ body {
 .botw{
     cursor: pointer;
 }
+
+.fa-sun{
+    color: rgb(194, 183, 28);
+}
+
+.fa-wind{
+    color: rgb(78, 128, 194);
+}
+
+.fa-temperature-high{
+    color: rgb(158, 101, 101);
+}
+
+.fa-cloud{
+    color: rgb(107, 107, 107);
+}
+
+
     /* =============== Bookshelf ===================================== */
 
 .not-visible {
