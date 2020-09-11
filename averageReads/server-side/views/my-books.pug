@@ -37,7 +37,7 @@ html(lang="en")
                                                 p.has-text-weight-light=Book.description
                                             div.tile.is-child.field.has-addons
                                                 p.control
-                                                    button.button.is-danger(id=`details-btn` class=`${Book.id}`) Details
+                                                    button.button.is-danger(id=`details-btn` class=`details-btn ${Book.id}`) Details
                                                 p.control
                                                     button.button.is-warning(class=`start-book ${Book.id}`) Start Reading
                     .tile.is-8.is-parent.have-read.not-visible
@@ -58,7 +58,7 @@ html(lang="en")
                                                 p.has-text-weight-light=Book.description
                                             div.tile.is-child.field.has-addons
                                                 p.control
-                                                    button.button.is-danger(id=`details-btn` class=`${Book.id}`) Details
+                                                    button.button.is-danger(id=`details-btn` class=`details-btn ${Book.id}`) Details
                                                 p.control
                                                     button.button.is-warning(class=`destroy-book ${Book.id}`) Archive
                     .tile.is-8.is-parent.reading.not-visible
@@ -79,7 +79,7 @@ html(lang="en")
                                                 p.has-text-weight-light=Book.description
                                             div.tile.is-child.field.has-addons
                                                 p.control
-                                                    button.button.is-danger(id=`details-btn` class=`${Book.id}`) Details
+                                                    button.button.is-danger(id=`details-btn` class=`details-btn ${Book.id}`) Details
                                                 p.control
                                                     button.button.is-warning(class=`completed-book ${Book.id}`) Completed
         include footer.pug

@@ -44,11 +44,6 @@ router.post('/:id/wants-to-read', asyncHandler(async (req, res) => {
         }
     });
 
-    if (isBook) {
-        res.send(304);
-        return;
-    }
-
     //create new Bookshelf entry
     const newBookshelfItem = {
         userId,
@@ -59,7 +54,14 @@ router.post('/:id/wants-to-read', asyncHandler(async (req, res) => {
     }
 
     try {
+        if (isBook) {
+            await isBook.update(newBookshelfItem);
+            res.redirect(`/mybooks/${userId}`);
+            return;
+        }
         await db.Bookshelf.create(newBookshelfItem);
+        res.redirect(`/mybooks/${userId}`);
+        return;
     } catch (err) {
         console.log(err);
     }
@@ -78,12 +80,6 @@ router.post('/:id/reading', asyncHandler(async (req, res) => {
             userId,
         }
     });
-
-    if (isBook) {
-        res.send(304);
-        return;
-    }
-
     //create new Bookshelf entry
     const newBookshelfItem = {
         userId,
@@ -92,14 +88,18 @@ router.post('/:id/reading', asyncHandler(async (req, res) => {
         wantsToRead: false,
         reading: true,
     }
-
     try {
+        if (isBook) {
+            await isBook.update(newBookshelfItem);
+            res.redirect(`/mybooks/${userId}`)
+            return;
+        }
         await db.Bookshelf.create(newBookshelfItem);
+        res.redirect(`/mybooks/${userId}`)
+        return;
     } catch (err) {
         console.log(err);
     }
-
-    res.send(204);
 }));
 
 router.put('/:id/reading', asyncHandler(async (req, res) => {
@@ -122,10 +122,11 @@ router.put('/:id/reading', asyncHandler(async (req, res) => {
     }
     try {
         await isBook.update(newBookshelfItem);
+        res.redirect(`/mybooks/${userId}`)
+        return;
     } catch (err) {
         console.log(err);
     }
-    await renderBookshelf(userId, res)
 }));
 
 router.post('/:id/have-read', asyncHandler(async (req, res) => {
@@ -150,11 +151,17 @@ router.post('/:id/have-read', asyncHandler(async (req, res) => {
     }
 
     try {
-        await isBook.update(newBookshelfItem);
+        if (isBook) {
+            await isBook.update(newBookshelfItem);
+            res.redirect(`/mybooks/${userId}`);
+            return;
+        }
+        await db.Bookshelf.create(newBookshelfItem);
+        res.redirect(`/mybooks/${userId}`);
+        return;
     } catch (err) {
         console.log(err);
     }
-    await renderBookshelf(userId, res)
 }));
 
 router.put('/:id/have-read', asyncHandler(async (req, res) => {
@@ -180,11 +187,12 @@ router.put('/:id/have-read', asyncHandler(async (req, res) => {
     console.log('before try catch of script')
     try {
         await isBook.update(newBookshelfItem);
+        res.redirect(`/mybooks/${userId}`);
+        return;
     } catch (err) {
         console.log(err);
     }
     console.log('end of script')
-    await renderBookshelf(userId, res);
 }));
 
 router.delete('/:id/destroy', asyncHandler(async (req, res) => {
@@ -203,7 +211,8 @@ router.delete('/:id/destroy', asyncHandler(async (req, res) => {
         console.log(err);
     }
     console.log('end of script')
-    await renderBookshelf(userId, res);
+    renderBookshelf(userId, res);
+    return;
 }));
 
 router.post('/:id/check-bookshelf', asyncHandler(async (req, res) => {

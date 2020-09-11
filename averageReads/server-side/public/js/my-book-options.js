@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const wantToReadBtn = document.querySelector('#want-to-read');
 
     const userId = localStorage.getItem('AVG_READS_CURRENT_USER_ID');
-    const body = { userId };
+    let body = { userId };
     const getBook = document.querySelector('.get-book').classList;
     const bookId = getBook[getBook.length - 1];
 
@@ -16,14 +16,20 @@ document.addEventListener('DOMContentLoaded', async () => {
         },
     });
 
-    const options = await res.json()
-    if (options.reading) readingBtn.setAttribute('disabled', 'true');
-    if (options.wantsToRead) wantToReadBtn.setAttribute('disabled', 'true');
-    if (options.haveRead) haveReadBtn.setAttribute('disabled', 'true');
-
+    const options = await res.json();
+    console.log(options);
+    if (options.reading) {
+        readingBtn.setAttribute('disabled', 'true');
+    }
+    if (options.wantsToRead) {
+        wantToReadBtn.setAttribute('disabled', 'true');
+    }
+    if (options.haveRead) {
+        haveReadBtn.setAttribute('disabled', 'true');
+    }
     wantToReadBtn.addEventListener('click', async () => {
         try {
-            res = await fetch(`/books/${bookId}/wants-to-read`, {
+            var res = await fetch(`/books/${bookId}/wants-to-read`, {
                 method: "POST",
                 body: JSON.stringify(body),
                 headers: {
@@ -33,16 +39,12 @@ document.addEventListener('DOMContentLoaded', async () => {
         } catch (err) {
             console.log(err);
         }
-        if (res.status === 204) {
-            alert('Book added to wishlist!');
-        } else if (res.status === 304) {
-            alert('Book already in your collection.')
-        }
+        location.reload();
     });
 
     readingBtn.addEventListener('click', async () => {
         try {
-            res = await fetch(`/books/${bookId}/reading`, {
+            var res = await fetch(`/books/${bookId}/reading`, {
                 method: "POST",
                 body: JSON.stringify(body),
                 headers: {
@@ -52,16 +54,12 @@ document.addEventListener('DOMContentLoaded', async () => {
         } catch (err) {
             console.log(err);
         }
-        if (res.status === 204) {
-            alert('Book added to reading list!');
-        } else if (res.status === 304) {
-            alert('Go outside and finish you book!')
-        }
+        location.reload();
     });
 
     haveReadBtn.addEventListener('click', async () => {
         try {
-            res = await fetch(`/books/${bookId}/have-read`, {
+            var res = await fetch(`/books/${bookId}/have-read`, {
                 method: "POST",
                 body: JSON.stringify(body),
                 headers: {
@@ -71,10 +69,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         } catch (err) {
             console.log(err);
         }
-        if (res.status === 204) {
-            alert('Book added to reading list!');
-        } else if (res.status === 304) {
-            alert('Book already marked as read, maybe you want to read it again?')
-        }
+        location.reload();
     });
 });
