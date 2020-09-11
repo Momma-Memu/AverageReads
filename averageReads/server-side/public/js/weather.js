@@ -48,8 +48,7 @@ async function domManipulate(){
 navigator.geolocation.getCurrentPosition(async function(position) {
     lat = Number(position.coords.latitude.toString().slice(0, 6));
     lng = Number(position.coords.longitude.toString().slice(0, 6));
-    console.log(lat)
-    console.log(lng)
+
     const params = 'airTemperature,windSpeed,cloudCover,humidity';
 
     const response = await fetch(`https://api.stormglass.io/v2/weather/point?lat=${lat}&lng=${lng}&params=${params}`, {
