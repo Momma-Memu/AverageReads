@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 userId
             }
             try {
-                var res = await fetch(`http://localhost:8080/books/${bookId}/reading`, {
+                var res = await fetch(`/books/${bookId}/reading`, {
                     method: "PUT",
                     body: JSON.stringify(body),
                     headers: {
@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 userId
             }
             try {
-                res = await fetch(`http://localhost:8080/books/${bookId}/have-read`, {
+                res = await fetch(`/books/${bookId}/have-read`, {
                     method: "PUT",
                     body: JSON.stringify(body),
                     headers: {
@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 userId
             }
             try {
-                res = await fetch(`http://localhost:8080/books/${bookId}/destroy`, {
+                res = await fetch(`/books/${bookId}/destroy`, {
                     method: "DELETE",
                     body: JSON.stringify(body),
                     headers: {
@@ -104,4 +104,3 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
-

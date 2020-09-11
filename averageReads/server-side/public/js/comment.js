@@ -6,7 +6,7 @@ submit.addEventListener('click', async() => {
     const textarea = document.getElementById('userComment')
     const message = textarea.value
     const body = { message }
-    const response = await fetch(`http://localhost:8080/comment/${userId}/${bookId}`, {
+    const response = await fetch(`/comment/${userId}/${bookId}`, {
         method: 'POST',
         body: JSON.stringify(body),
         headers:{

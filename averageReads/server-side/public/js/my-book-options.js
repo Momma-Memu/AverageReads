@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const getBook = document.querySelector('.get-book').classList;
     const bookId = getBook[getBook.length - 1];
 
-    const res = await fetch(`http://localhost:8080/books/${bookId}/check-bookshelf`, {
+    const res = await fetch(`/books/${bookId}/check-bookshelf`, {
         method: "POST",
         body: JSON.stringify(body),
         headers: {
@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     wantToReadBtn.addEventListener('click', async () => {
         try {
-            res = await fetch(`http://localhost:8080/books/${bookId}/wants-to-read`, {
+            res = await fetch(`/books/${bookId}/wants-to-read`, {
                 method: "POST",
                 body: JSON.stringify(body),
                 headers: {
@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     readingBtn.addEventListener('click', async () => {
         try {
-            res = await fetch(`http://localhost:8080/books/${bookId}/reading`, {
+            res = await fetch(`/books/${bookId}/reading`, {
                 method: "POST",
                 body: JSON.stringify(body),
                 headers: {
@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     haveReadBtn.addEventListener('click', async () => {
         try {
-            res = await fetch(`http://localhost:8080/books/${bookId}/have-read`, {
+            res = await fetch(`/books/${bookId}/have-read`, {
                 method: "POST",
                 body: JSON.stringify(body),
                 headers: {

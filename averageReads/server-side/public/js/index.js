@@ -1,6 +1,6 @@
 
 const checkAuth = (async () => {
-    const res = await fetch(`http://localhost:8080`, {
+    const res = await fetch(`/`, {
         headers: {
             Authorization: `Bearer ${localStorage.getItem(
                 "AVG_READS_ACCESS_TOKEN"

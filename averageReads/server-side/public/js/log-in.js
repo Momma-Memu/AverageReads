@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const password = formData.get("password");
         const body = { email, password };
         try {
-            const res = await fetch("http://localhost:8080/users/token", {
+            const res = await fetch("/users/token", {
                 method: "POST",
                 body: JSON.stringify(body),
                 headers: {
@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const password = formData.get("password");
         const body = { email, password, username };
         try {
-            const res = await fetch("http://localhost:8080/users", {
+            const res = await fetch("/users", {
                 method: "POST",
                 body: JSON.stringify(body),
                 headers: {

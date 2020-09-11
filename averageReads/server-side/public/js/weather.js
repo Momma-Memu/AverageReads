@@ -11,14 +11,14 @@ async function domManipulate(){
 
     const lat = 25.8305;
     const lng = -80.1803;
-
+    const key = document.cookie.split(';')[0].split('=')[1]
     const params = 'airTemperature,windSpeed,cloudCover,humidity';
 
-        const response = await fetch(`https://api.stormglass.io/v2/weather/point?lat=${lat}&lng=${lng}&params=${params}`, {
-            headers: {
-                'Authorization': '3d4d1220-f46c-11ea-9d9b-0242ac130002-3d4d12de-f46c-11ea-9d9b-0242ac130002'
-            }
-        })
+    const response = await fetch(`https://api.stormglass.io/v2/weather/point?lat=${lat}&lng=${lng}&params=${params}`, {
+        headers: {
+            'Authorization': key
+        }
+    })
     const weather = await response.json();
 
     const temp = weather.hours[0].airTemperature.noaa * 9 / 5 + 32;
@@ -29,13 +29,15 @@ async function domManipulate(){
     const windDiv = document.getElementById('wind');
     const tempDiv = document.getElementById('temp');
 
-    const apiKey = '4ccce17a2b18430f8ddcf4f6956b9943'
-    const reverseGeoUrl =
-        'https://api.opencagedata.com/geocode/v1/json'
-        + '?' + 'key=' + apiKey + '&q=' + encodeURIComponent(lat + ',' + lng)
-        + '&pretty=1' + '&no_annotations=1';
+    const addData = await fetch('/weather', {
+        method: 'POST',
+        body: JSON.stringify({lat, lng}),
+        headers:{
+            'Content-Type': 'application/json'
+        },
+    })
 
-    const addData = await fetch(reverseGeoUrl)
+
     const parsedAdd = await addData.json();
     const address = parsedAdd.results[0].formatted.split(',')[1]
 
@@ -49,14 +51,16 @@ navigator.geolocation.getCurrentPosition(async function(position) {
     lat = Number(position.coords.latitude.toString().slice(0, 6));
     lng = Number(position.coords.longitude.toString().slice(0, 6));
 
+    const key = document.cookie.split(';')[0].split('=')[1]
     const params = 'airTemperature,windSpeed,cloudCover,humidity';
 
     const response = await fetch(`https://api.stormglass.io/v2/weather/point?lat=${lat}&lng=${lng}&params=${params}`, {
         headers: {
-            'Authorization': '3d4d1220-f46c-11ea-9d9b-0242ac130002-3d4d12de-f46c-11ea-9d9b-0242ac130002'
+            'Authorization': key
         }
     })
     const weather = await response.json();
+
     const temp = weather.hours[0].airTemperature.noaa * 9 / 5 + 32;
     const cloud = weather.hours[0].cloudCover.noaa
     const wind = Math.round(weather.hours[0].windSpeed.noaa * 2.236936);
@@ -66,13 +70,14 @@ navigator.geolocation.getCurrentPosition(async function(position) {
     const tempDiv = document.getElementById('temp');
     const cityDiv = document.getElementById('city');
 
-    const apiKey = '4ccce17a2b18430f8ddcf4f6956b9943'
-    const reverseGeoUrl =
-        'https://api.opencagedata.com/geocode/v1/json'
-        + '?' + 'key=' + apiKey + '&q=' + encodeURIComponent(lat + ',' + lng)
-        + '&pretty=1' + '&no_annotations=1';
+    const addData = await fetch('/weather', {
+        method: 'POST',
+        body: JSON.stringify({lat, lng}),
+        headers:{
+            'Content-Type': 'application/json'
+        },
+    })
 
-    const addData = await fetch(reverseGeoUrl)
     const parsedAdd = await addData.json();
     const address = parsedAdd.results[0].formatted.split(',')[1]
 
