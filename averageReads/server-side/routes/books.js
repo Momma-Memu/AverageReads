@@ -235,7 +235,16 @@ router.post('/:id/check-bookshelf', asyncHandler(async (req, res) => {
             wantsToRead: isBook.wantsToRead
         }
     }
-    res.json({options});
+    if (options) {
+        res.json({ options });
+    } else {
+        res.json({ options:{
+            haveRead: false,
+            reading: false,
+            wantsToRead: false
+        }})
+    }
+
 }));
 
 module.exports = {
