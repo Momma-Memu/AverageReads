@@ -1,29 +1,50 @@
 
-const fetchBooks = async () => {
-    const res = await fetch("http://localhost:8080/users/mybooks", {
+const checkAuth = (async () => {
+    const res = await fetch(`http://localhost:8080`, {
         headers: {
             Authorization: `Bearer ${localStorage.getItem(
                 "AVG_READS_ACCESS_TOKEN"
             )}`,
         },
     });
-    if (res.status === 401) {
-        window.location.href = "/";
+    if ((res.status !== 401) && (window.location.pathname === "/")) {
+        window.location.href = "/home";
+        return;
+    } else if ((res.status === 401) && (window.location.pathname === "/")) {
+        console.log("bool")
         return;
     }
-    const { mybooks } = await res.json();
-    console.log(mybooks)
-}
+    else if (res.status === 401) { return window.location.href = "/"; }
+})()
 
 
-document.addEventListener("DOMContentLoaded", async () => {
-    try {
-        await fetchBooks();
-    } catch (e) {
-        console.error(e);
-    }
-    console.log("nofetchaction")
-});
+
+
+// const fetchBooks = async () => {
+//     const res = await fetch("http://localhost:8080/users/mybooks", {
+//         headers: {
+//             Authorization: `Bearer ${localStorage.getItem(
+//                 "AVG_READS_ACCESS_TOKEN"
+//             )}`,
+//         },
+//     });
+//     if (res.status === 401) {
+//         window.location.href = "/";
+//         return;
+//     }
+//     const { mybooks } = await res.json();
+//     console.log(mybooks)
+// }
+
+
+// document.addEventListener("DOMContentLoaded", async () => {
+//     try {
+//         await fetchBooks();
+//     } catch (e) {
+//         console.error(e);
+//     }
+//     console.log("nofetchaction")
+// });
 
 // document.addEventListener("DOMContentLoaded", () => {
 

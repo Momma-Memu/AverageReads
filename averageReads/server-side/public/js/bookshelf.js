@@ -1,19 +1,5 @@
-// const books = (async function () {
-//     const id = localStorage.getItem("AVG_READS_CURRENT_USER_ID");
-
-//     const res = await fetch(`http://localhost:8080/mybooks/3`);
-
-//     const books = await res.json();
-
-//     console.log(books)
-
-//     for (let book in books.books) {
-
-//     }
-// })();
-
-
 document.addEventListener('DOMContentLoaded', () => {
+    const userId = localStorage.getItem('AVG_READS_CURRENT_USER_ID');
 
     const reading = document.querySelector('#reading');
     const haveRead = document.querySelector('#have-read');
@@ -42,9 +28,80 @@ document.addEventListener('DOMContentLoaded', () => {
     const details = document.querySelector("#event-listener");
     details.addEventListener("click", async (e) => {
         e.preventDefault();
-        if (e.target.classList[e.target.classList.length - 1].match(/^\w+\d+/)) {
-            console.log(e.target.classList[e.target.classList.length - 1]);
-            window.location.href = `/books/${e.target.classList[e.target.classList.length - 1]}`;
+        const bookId = parseInt(e.target.classList[e.target.classList.length - 1]);
+        console.log(e.target.classList)
+        if (e.target.classList.contains('details-btn')) {
+            window.location.href = `/books/${bookId}`;
+        }
+
+        if (e.target.classList.contains('start-book')) {
+            const body = {
+                bookId,
+                userId
+            }
+            try {
+                var res = await fetch(`http://localhost:8080/books/${bookId}/reading`, {
+                    method: "PUT",
+                    body: JSON.stringify(body),
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                });
+            } catch (err) {
+                console.log(err);
+            }
+            if (res.status === 204) {
+                alert('Good job! Book marked as finito!');
+            } else if (res.status === 304) {
+                alert('Book already in your collection.')
+            }
+        }
+
+        if (e.target.classList.contains('completed-book')) {
+            const body = {
+                bookId,
+                userId
+            }
+            try {
+                res = await fetch(`http://localhost:8080/books/${bookId}/have-read`, {
+                    method: "PUT",
+                    body: JSON.stringify(body),
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                });
+            } catch (err) {
+                console.log(err);
+            }
+            if (res.status === 204) {
+                alert('Good job! Book marked as finito!');
+            } else if (res.status === 304) {
+                alert('Book already in your collection.')
+            }
+        }
+
+        if (e.target.classList.contains('destroy-book')) {
+            const body = {
+                bookId,
+                userId
+            }
+            try {
+                res = await fetch(`http://localhost:8080/books/${bookId}/destroy`, {
+                    method: "DELETE",
+                    body: JSON.stringify(body),
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                });
+            } catch (err) {
+                console.log(err);
+            }
+            if (res.status === 204) {
+                alert('Book is gone!');
+            } else if (res.status === 304) {
+                alert('Book already in your collection.')
+            }
         }
     });
-});    
+});
+

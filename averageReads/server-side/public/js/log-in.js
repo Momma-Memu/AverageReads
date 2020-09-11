@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // storage access_token in localStorage:
             localStorage.setItem("AVG_READS_ACCESS_TOKEN", token);
             localStorage.setItem("AVG_READS_CURRENT_USER_ID", id);
-            window.location.href = "/";
+            window.location.href = "/home";
 
         } catch (err) {
             handleErrors(err);
@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // storage access_token in localStorage:
             localStorage.setItem("AVG_READS_ACCESS_TOKEN", token);
             localStorage.setItem("AVG_READS_CURRENT_USER_ID", id);
-            // window.location.href = "/";
+            window.location.href = "/home";
             console.log(token)
         } catch (err) {
             handleErrors(err);

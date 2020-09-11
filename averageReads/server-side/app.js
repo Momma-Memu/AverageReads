@@ -3,18 +3,20 @@ const morgan = require("morgan");
 const path = require("path");
 
 const { ValidationError } = require("sequelize");
-const {router: indexRouter} = require("./routes/index");
-const {router: booksRouter } = require('./routes/books');
-const {router: myBooksRouter} = require('./routes/bookshelf');
-const {router: commentsRouter} = require('./routes/comments');
+const { router: indexRouter } = require("./routes/index");
+const { router: booksRouter } = require('./routes/books');
+const { router: myBooksRouter } = require('./routes/bookshelf');
+const { router: commentsRouter } = require('./routes/comments');
 const { router: allBooksSearchRouter } = require('./routes/all-books');
 const usersRouter = require("./routes/users");
 const { environment } = require("./config");
+const { requireAuth } = require("./auth");
 const cors = require('cors');
 
 const app = express();
 app.set('view engine', 'pug');
 
+app.use(requireAuth);
 app.use(express.static(path.join(__dirname, "public")));
 app.use(morgan("dev"));
 app.use(express.json());
@@ -22,6 +24,7 @@ app.use(express.urlencoded())
 //Populate DB Route
 const dbPopulateRouter = require('./routes/db-populate');
 const { urlencoded } = require("express");
+
 
 app.use("/", indexRouter);
 app.use('/db-populate', dbPopulateRouter);

@@ -21,6 +21,11 @@ router.get("/", (req, res) => {
   res.render("homepage");
 });
 
+//viewer
+router.get("/viewer", (req, res) => {
+  res.render("viewer");
+});
+
 //DB Populate Route
 router.get('/db-populate', (req, res) => {
   res.render('db-populate');

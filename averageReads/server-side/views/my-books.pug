@@ -3,6 +3,7 @@ html(lang="en")
     head
         meta(charset="UTF-8")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        script(src="js/index.js" type="module")
         link(rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css")
         link(rel="stylesheet", type="text/css" href="/style.css")
         title My Books | Averagereads
@@ -21,7 +22,7 @@ html(lang="en")
                     .tile.is-8.is-parent.wants-to-read.not-visible
                         .tile.is-child
                             p.title I want to read
-                                each Book in br
+                                each Book in bwtr
                                     div.tile.is-ancestor.box
                                         .tile.is-parent.is-3
                                             div.tile.is-child
@@ -38,7 +39,7 @@ html(lang="en")
                                                 p.control
                                                     button.button.is-danger(id=`details-btn` class=`${Book.id}`) Details
                                                 p.control
-                                                    button.button.is-warning Start Reading
+                                                    button.button.is-warning(class=`start-book ${Book.id}`) Start Reading
                     .tile.is-8.is-parent.have-read.not-visible
                         .tile.is-child
                             p.title Completed
@@ -59,11 +60,11 @@ html(lang="en")
                                                 p.control
                                                     button.button.is-danger(id=`details-btn` class=`${Book.id}`) Details
                                                 p.control
-                                                    button.button.is-warning Archive
+                                                    button.button.is-warning(class=`destroy-book ${Book.id}`) Archive
                     .tile.is-8.is-parent.reading.not-visible
                         .tile.is-child
                             p.title I'm reading
-                                each Book in bwtr
+                                each Book in br
                                     div.tile.is-ancestor.box
                                         .tile.is-parent.is-3
                                             div.tile.is-child
@@ -80,5 +81,5 @@ html(lang="en")
                                                 p.control
                                                     button.button.is-danger(id=`details-btn` class=`${Book.id}`) Details
                                                 p.control
-                                                    button.button.is-warning Completed
+                                                    button.button.is-warning(class=`completed-book ${Book.id}`) Completed
         include footer.pug
