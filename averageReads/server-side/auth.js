@@ -29,6 +29,7 @@ const restoreUser = (req, res, next) => {
     const { token } = req;
 
     if (!token) {
+        console.log("no token found via auth")
         return next();
     }
 
@@ -51,6 +52,7 @@ const restoreUser = (req, res, next) => {
             // if no user on req obj, meaning user wasnt found
             // Send a "401 Unauthorized" response status code
             // along with an "WWW-Authenticate" header value of "Bearer".
+            console.log("no user found on req via auth")
             return res.set("WWW-Authenticate", "Bearer").status(401).end();
         }
 

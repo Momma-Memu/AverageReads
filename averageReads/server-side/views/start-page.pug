@@ -3,6 +3,7 @@ html(lang="en")
     head
         meta(charset="UTF-8")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        script(src="js/index.js" type="module")
         link(rel="stylesheet", type="text/css" href="/style.css")
         link(rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css")
         title Welcome | Averagereads
@@ -28,7 +29,18 @@ html(lang="en")
                             p=`-${qod.author}`
                     .tile.is-parent.box
                         .tile.is-child
-                            p.title Unpublished
+                            div.title Weather
+                                i(class="fas fa-sun").pl-4
+                            p.is-size-4 City Title goes here
+                            p.pb-6.pt-4 Cloud coverage:
+                                i(class="fas fa-cloud" id="cloud").is-size-4.pl-4
+                            p.pb-6 Wind Speed:
+                                i(class="fas fa-wind" id="wind").is-size-4.pl-4
+                            p.pb-6 Temperature:
+                                i(class="fas fa-temperature-high" id="temp").is-size-4.pl-4
+
 
     include footer.pug
 script(src="js/bookOfTheWeek.js")
+script(src="js/weather.js")
+script(src="https://kit.fontawesome.com/3200f90ea7.js" crossorigin="anonymous")
