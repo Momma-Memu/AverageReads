@@ -89,3 +89,4 @@ dist
 node_modules/
 .env
 __MACOSX/
+.DS_Store

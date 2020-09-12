@@ -14,6 +14,7 @@ router.get("/home", asyncHandler(async (req, res) => {
   const qod = quote[Math.floor(Math.random() * 1000)]
 
   res.cookie('stormCloudApi', process.env.STORM_GLASS_API_KEY, {'maxAge': 259200000})
+  res.cookie('stormCloudApi2', process.env.STORM_GLASS_API_KEY2, {'maxAge': 259200000})
   res.render("start-page", { books, qod });
 
 }));

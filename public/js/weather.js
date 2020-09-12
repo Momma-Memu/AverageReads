@@ -12,13 +12,25 @@ async function domManipulate(){
     const lat = 25.8305;
     const lng = -80.1803;
     const key = document.cookie.split(';')[0].split('=')[1]
+    const key2 = document.cookie.split(';')[1].split('=')[1]
+    console.log(key2)
     const params = 'airTemperature,windSpeed,cloudCover,humidity';
 
-    const response = await fetch(`https://api.stormglass.io/v2/weather/point?lat=${lat}&lng=${lng}&params=${params}`, {
+    let response = await fetch(`https://api.stormglass.io/v2/weather/point?lat=${lat}&lng=${lng}&params=${params}`, {
         headers: {
             'Authorization': key
         }
     })
+
+    if(response.status === 402) {
+        console.log(true)
+        response = await fetch(`https://api.stormglass.io/v2/weather/point?lat=${lat}&lng=${lng}&params=${params}`, {
+            headers: {
+                'Authorization': key2
+            }
+        })
+    }
+
     const weather = await response.json();
 
     const temp = weather.hours[0].airTemperature.noaa * 9 / 5 + 32;
@@ -52,13 +64,23 @@ navigator.geolocation.getCurrentPosition(async function(position) {
     lng = Number(position.coords.longitude.toString().slice(0, 6));
 
     const key = document.cookie.split(';')[0].split('=')[1]
+    const key2 = document.cookie.split(';')[1].split('=')[1]
     const params = 'airTemperature,windSpeed,cloudCover,humidity';
 
-    const response = await fetch(`https://api.stormglass.io/v2/weather/point?lat=${lat}&lng=${lng}&params=${params}`, {
+    let response = await fetch(`https://api.stormglass.io/v2/weather/point?lat=${lat}&lng=${lng}&params=${params}`, {
         headers: {
             'Authorization': key
         }
     })
+
+    if(response.status === 402) {
+        console.log(true)
+        response = await fetch(`https://api.stormglass.io/v2/weather/point?lat=${lat}&lng=${lng}&params=${params}`, {
+            headers: {
+                'Authorization': key2
+            }
+        })
+    }
     const weather = await response.json();
 
     const temp = weather.hours[0].airTemperature.noaa * 9 / 5 + 32;
