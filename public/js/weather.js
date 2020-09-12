@@ -5,7 +5,7 @@ async function domManipulate(){
     const cityDiv = document.getElementById('city');
 
     if(cityDiv.innerHTML.includes('In')){
-        console.log('hey')
+        // console.log('hey')
         return;
     }
 
@@ -23,12 +23,13 @@ async function domManipulate(){
     })
 
     if(response.status === 402) {
-        console.log(true)
+        // console.log(true)
         response = await fetch(`https://api.stormglass.io/v2/weather/point?lat=${lat}&lng=${lng}&params=${params}`, {
             headers: {
                 'Authorization': key2
             }
         })
+        // console.log('after call two')
     }
 
     const weather = await response.json();
@@ -74,12 +75,13 @@ navigator.geolocation.getCurrentPosition(async function(position) {
     })
 
     if(response.status === 402) {
-        console.log(true)
+        // console.log(true)
         response = await fetch(`https://api.stormglass.io/v2/weather/point?lat=${lat}&lng=${lng}&params=${params}`, {
             headers: {
                 'Authorization': key2
             }
         })
+        // console.log('after call two')
     }
     const weather = await response.json();
 
