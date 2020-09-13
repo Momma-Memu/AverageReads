@@ -50,11 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
             } catch (err) {
                 console.log(err);
             }
-            if (res.status === 204) {
-                alert('Good job! Book marked as finito!');
-            } else if (res.status === 304) {
-                alert('Book already in your collection.')
-            }
+            location.reload();
         }
 
         if (e.target.classList.contains('completed-book')) {
@@ -73,11 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
             } catch (err) {
                 console.log(err);
             }
-            if (res.status === 204) {
-                alert('Good job! Book marked as finito!');
-            } else if (res.status === 304) {
-                alert('Book already in your collection.')
-            }
+            location.reload();
         }
 
         if (e.target.classList.contains('destroy-book')) {
@@ -96,11 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
             } catch (err) {
                 console.log(err);
             }
-            if (res.status === 204) {
-                alert('Book is gone!');
-            } else if (res.status === 304) {
-                alert('Book already in your collection.')
-            }
+            location.reload();
         }
     });
 });

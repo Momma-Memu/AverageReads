@@ -12,10 +12,10 @@ const { nextTick } = require('process');
 
 router.use(express.static(path.join("public")));
 
-router.get("/", asyncHandler(async (req, res) => {
-    const books = await db.Book.findAll({ limit: 6 })
-    res.json({ books })
-}))
+// router.get("/", asyncHandler(async (req, res) => {
+//     const books = await db.Book.findAll({ limit: 6 })
+//     res.json({ books })
+// }))
 
 router.get('/:id', asyncHandler(async (req, res) => {
     const bookId = parseInt(req.params.id, 10)
@@ -238,11 +238,13 @@ router.post('/:id/check-bookshelf', asyncHandler(async (req, res) => {
     if (options) {
         res.json({ options });
     } else {
-        res.json({ options:{
-            haveRead: false,
-            reading: false,
-            wantsToRead: false
-        }})
+        res.json({
+            options: {
+                haveRead: false,
+                reading: false,
+                wantsToRead: false
+            }
+        })
     }
 
 }));
