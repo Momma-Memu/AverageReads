@@ -59,7 +59,7 @@ router.get('/about-us', (req, res) => {
 
 router.get('/our-mission', (req, res) => {
   //placeholder for mission
-  res.send('our-mission')
+  res.render('our-mission')
 })
 
 module.exports = {
