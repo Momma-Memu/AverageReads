@@ -19,18 +19,18 @@ router.get("/home", asyncHandler(async (req, res) => {
 
 }));
 
-// router.post("/weather", asyncHandler(async (req, res) => {
-//   const { lat, lng }= req.body
-//   const apiKey = process.env.WEATHER_API_KEY
-//   const reverseGeoUrl =
-//       'https://api.opencagedata.com/geocode/v1/json'
-//       + '?' + 'key=' + apiKey + '&q=' + encodeURIComponent(lat + ',' + lng)
-//       + '&pretty=1' + '&no_annotations=1';
-//   const data = await fetch(reverseGeoUrl)
-//   const location = await data.json()
-//   console.log(location)
-//   res.json(location)
-// }))
+router.post("/weather", asyncHandler(async (req, res) => {
+  const { lat, lng }= req.body
+  const apiKey = process.env.WEATHER_API_KEY
+  const reverseGeoUrl =
+      'https://api.opencagedata.com/geocode/v1/json'
+      + '?' + 'key=' + apiKey + '&q=' + encodeURIComponent(lat + ',' + lng)
+      + '&pretty=1' + '&no_annotations=1';
+  const data = await fetch(reverseGeoUrl)
+  const location = await data.json()
+  console.log(location)
+  res.json(location)
+}))
 
 //homepage
 router.get("/", (req, res) => {
