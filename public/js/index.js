@@ -1,21 +1,34 @@
+document.addEventListener("DOMContentLoaded", e => {
+    console.log(e)
+    if (!localStorage["AVG_READS_ACCESS_TOKEN"]) {
+        if (window.location.pathname === "/") { return }
+        window.location.replace('/')
+    } else if (localStorage["AVG_READS_ACCESS_TOKEN"] && (window.location.pathname === "/")) {
+        window.location.replace('/home')
+    } else { return }
+});
 
-const checkAuth = (async () => {
-    const res = await fetch(`/`, {
-        headers: {
-            Authorization: `Bearer ${localStorage.getItem(
-                "AVG_READS_ACCESS_TOKEN"
-            )}`,
-        },
-    });
-    if ((res.status !== 401) && (window.location.pathname === "/")) {
-        window.location.href = "/home";
-        return;
-    } else if ((res.status === 401) && (window.location.pathname === "/")) {
-        console.log("bool")
-        return;
-    }
-    else if (res.status === 401) { return window.location.href = "/"; }
-})()
+// if (!localStorage["AVG_READS_ACCESS_TOKEN"]) {
+//     window.location.replace('/')
+// } else {return}
+
+// const checkAuth = (async () => {
+//     const res = await fetch(`/`, {
+//         headers: {
+//             Authorization: `Bearer ${localStorage.getItem(
+//                 "AVG_READS_ACCESS_TOKEN"
+//             )}`,
+//         },
+//     });
+//     if ((res.status !== 401) && (window.location.pathname === "/")) {
+//         window.location.href = "/home";
+//         return;
+//     } else if ((res.status === 401) && (window.location.pathname === "/")) {
+//         console.log("bool")
+//         return;
+//     }
+//     else if (res.status === 401) { return window.location.href = "/"; }
+// })()
 
 
 

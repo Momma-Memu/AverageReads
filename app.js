@@ -16,7 +16,7 @@ const cors = require('cors');
 const app = express();
 app.set('view engine', 'pug');
 
-app.use(requireAuth);
+app.use(requireAuth)
 app.use(express.static(path.join(__dirname, "public")));
 app.use(morgan("dev"));
 app.use(express.json());
@@ -33,6 +33,11 @@ app.use("/mybooks", myBooksRouter);
 app.use("/users", usersRouter);
 app.use("/comment", commentsRouter);
 app.use('/search-books', allBooksSearchRouter);
+
+app.use(function (req, res, next) {
+  res.status(404)
+    .render('fourofour')
+});
 
 // Catch unhandled requests and forward to error handler.
 app.use((req, res, next) => {
