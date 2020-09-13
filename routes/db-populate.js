@@ -14,6 +14,7 @@ const router = express.Router();
 //Route makes random book request to the goodReads API
 //Route sends response to frontend client to be parsed from XML format to JS Object
 router.get('/', asyncHandler(async (req, res) => {
+    console.log('asdasdf23')
     //create new xhr XMLHttpRequest object 
     const xhr = new XMLHttpRequest();
     console.log('Eeehh we go! Fetching random book;)');

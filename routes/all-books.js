@@ -50,9 +50,12 @@ async function getBooksBy(search, ascOrDesc = 'ASC', next) {
 router.post('/', asyncHandler(async (req, res, next) => {
     console.log('asdasd')
     const { query } = req.body;
-    console.log(req);
     const books = await getBooksBy(query, ascOrDesc = 'ASC', numberOfBooks = Infinity, next);
-    console.log(books);
+
+    if (!books.length) {
+        console.log('no books for you')
+    }
+
     const bookResults = books.map(book => {
         const newBook = {};
         newBook.id = book.id;
@@ -62,9 +65,7 @@ router.post('/', asyncHandler(async (req, res, next) => {
         newBook.image = book.image;
         return newBook;
     });
-    console.log(bookResults);
     res.render('books', { bookResults });
-
 }));
 
 module.exports = { router };
