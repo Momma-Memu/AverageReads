@@ -29,7 +29,6 @@ router.post("/weather", verifyStatus, asyncHandler(async (req, res) => {
     + '&pretty=1' + '&no_annotations=1';
   const data = await fetch(reverseGeoUrl)
   const location = await data.json()
-  // console.log(location)
   res.json(location)
 }))
 

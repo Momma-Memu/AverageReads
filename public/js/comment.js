@@ -26,5 +26,5 @@ submit.addEventListener('click', async() => {
     const container = document.getElementById('review');
     container.innerHTML += reviewHtml
     textarea.value = "";
-    console.log(message)
+    // console.log(message)
 });

@@ -9,8 +9,27 @@ async function domManipulate(){
         return;
     }
 
-    const lat = 25.8305;
-    const lng = -80.1803;
+
+    let lat;
+    let lng;
+
+    const cookieArr = document.cookie.split(';')
+    cookieArr.forEach(cookie => {
+        if(cookie.includes('lat')){
+            // console.log(cookie)
+            lat = Number(cookie.split('=')[1])
+        } else if(cookie.includes('lng')){
+            lng = Number(cookie.split('=')[1])
+        }
+    });
+
+
+    if(!lng || !lat){
+        console.log('here')
+        lat = 25.8305;
+        lng = -80.1803;
+    }
+
     const key = document.cookie.split(';')[0].split('=')[1]
     const key2 = document.cookie.split(';')[1].split('=')[1]
     console.log(key2)
@@ -60,9 +79,16 @@ async function domManipulate(){
     tempDiv.innerHTML = ` ${temp}`
 }
 
+
 navigator.geolocation.getCurrentPosition(async function(position) {
-    lat = Number(position.coords.latitude.toString().slice(0, 6));
-    lng = Number(position.coords.longitude.toString().slice(0, 6));
+    const lat = Number(position.coords.latitude.toString().slice(0, 6));
+    const lng = Number(position.coords.longitude.toString().slice(0, 6));
+
+    // cookie('lat', lat, { 'maxAge': 259200000 })
+    // cookie('lng', lng, { 'maxAge': 259200000 })
+    document.cookie = `lat=${lat}; max-age-in-seconds=259200`;
+    document.cookie = `lng=${lng}; max-age-in-seconds=259200`;
+
 
     const key = document.cookie.split(';')[0].split('=')[1]
     const key2 = document.cookie.split(';')[1].split('=')[1]
