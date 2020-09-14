@@ -21,7 +21,7 @@ async function domManipulate(){
 
     let lat;
     let lng;
-
+    let key3
     const cookieArr = document.cookie.split(';')
     cookieArr.forEach(cookie => {
         if(cookie.includes('lat')){
@@ -29,6 +29,8 @@ async function domManipulate(){
             lat = Number(cookie.split('=')[1])
         } else if(cookie.includes('lng')){
             lng = Number(cookie.split('=')[1])
+        } else if(cookie.includes('stormCloudApi3')){
+            key3 = cookie.split('=')[1]
         }
     });
 
@@ -41,7 +43,8 @@ async function domManipulate(){
 
     const key = document.cookie.split(';')[0].split('=')[1]
     const key2 = document.cookie.split(';')[1].split('=')[1]
-    console.log(key2)
+
+    console.log(key3)
     const params = 'airTemperature,windSpeed,cloudCover,humidity';
 
     let response = await fetch(`https://api.stormglass.io/v2/weather/point?lat=${lat}&lng=${lng}&params=${params}`, {
@@ -55,6 +58,16 @@ async function domManipulate(){
         response = await fetch(`https://api.stormglass.io/v2/weather/point?lat=${lat}&lng=${lng}&params=${params}`, {
             headers: {
                 'Authorization': key2
+            }
+        })
+        // console.log('after call two')
+    }
+
+    if(response.status === 402) {
+        // console.log(true)
+        response = await fetch(`https://api.stormglass.io/v2/weather/point?lat=${lat}&lng=${lng}&params=${params}`, {
+            headers: {
+                'Authorization': key3
             }
         })
         // console.log('after call two')

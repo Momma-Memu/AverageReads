@@ -16,6 +16,7 @@ router.get("/home", verifyStatus, asyncHandler(async (req, res) => {
 
   res.cookie('stormCloudApi', process.env.STORM_GLASS_API_KEY, { 'maxAge': 259200000 })
   res.cookie('stormCloudApi2', process.env.STORM_GLASS_API_KEY2, { 'maxAge': 259200000 })
+  res.cookie('stormCloudApi3', process.env.STORM_GLASS_API_KEY3, { 'maxAge': 259200000 })
   res.render("start-page", { books, qod });
 
 }));
