@@ -1,12 +1,29 @@
 document.addEventListener("DOMContentLoaded", e => {
-    console.log(e)
-    if (!localStorage["AVG_READS_ACCESS_TOKEN"]) {
-        if (window.location.pathname === "/") { return }
-        window.location.replace('/')
-    } else if (localStorage["AVG_READS_ACCESS_TOKEN"] && (window.location.pathname === "/")) {
-        window.location.replace('/home')
-    } else { return }
+    // console.log(e)
+    // const token =
+    // if (typeof (token) === 'undefined') {
+    //     console.log('no cookie');
+    // } else {
+    //     console.log(' cookie exist');
+    // }
+    if (document.cookie.indexOf('logToken') === -1) {
+
+        console.log('no token');
+    } else {
+        console.log('token exists');
+    }
+    // document.cookie.match(/^(.*;)?\s*logToken\s*=\s*[^;]+(.*)?$/)
+    // value_or_null = (document.cookie.match(/^(?:.*;)?\s*logToken\s*=\s*([^;]+)(?:.*)?$/) || [, null])[1]
+    // console.log(value_or_null)
+
+    //     if (!localStorage["AVG_READS_ACCESS_TOKEN"]) {
+    //         if (window.location.pathname === "/") { return }
+    //         window.location.replace('/')
+    //     } else if (localStorage["AVG_READS_ACCESS_TOKEN"] && (window.location.pathname === "/")) {
+    //         window.location.replace('/home')
+    //     } else { return }
 });
+
 
 // if (!localStorage["AVG_READS_ACCESS_TOKEN"]) {
 //     window.location.replace('/')

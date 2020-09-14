@@ -4,12 +4,13 @@ const path = require('path');
 const { check } = require("express-validator");
 const { asyncHandler, handleValidationErrors } = require("../utils");
 const db = require("../db/models");
+const { verifyStatus } = require('../auth');
 
 const router = express.Router();
 
 router.use(express.static(path.join("public")));
 
-router.get("/:id", asyncHandler(async (req, res, next) => {
+router.get("/:id", verifyStatus, asyncHandler(async (req, res, next) => {
     const userId = req.params.id;
     renderBookshelf(userId, res);
 }));
@@ -20,7 +21,7 @@ module.exports = {
 };
 
 async function renderBookshelf(userId, res) {
-    console.log('ASSDASDWAwef3wf3wf23f123f231asdasd')
+    // console.log('ASSDASDWAwef3wf3wf23f123f231asdasd')
     try {
         var booksReading = await db.Bookshelf.findAll(
             {

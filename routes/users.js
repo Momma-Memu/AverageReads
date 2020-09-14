@@ -32,6 +32,7 @@ router.post(
             const user = await User.create({ username, email, hashedPassword });
 
             const token = getUserToken(user);
+            res.cookie("logToken", token)
             res.status(201).json({
                 user: { id: user.id },
                 token,
@@ -58,8 +59,9 @@ router.post("/token", validateEmailAndPassword, asyncHandler(async (req, res) =>
         return next(err);
     }
     const token = await getUserToken(user);
-    console.log(token)
-    res.json({ token, user: { id: user.id } });
+    // console.log(token)
+    res.cookie("logToken", token)
+    res.json({ token, user: { id: user.id } })
 })
 );
 

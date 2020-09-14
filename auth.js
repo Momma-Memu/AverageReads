@@ -60,6 +60,17 @@ const restoreUser = (req, res, next) => {
     });
 };
 
+const verifyStatus = (req, res, next) => {
+    if (!req.cookies.logToken) {
+        if (req.path === "/") {
+            return next()
+        }
+        // return res.status(401).render("homepage")
+        return res.redirect('/')
+    }
+    next()
+}
+
 const requireAuth = [bearerToken(), restoreUser];
 
-module.exports = { getUserToken, requireAuth };
+module.exports = { verifyStatus, getUserToken, requireAuth };

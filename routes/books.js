@@ -4,7 +4,7 @@ const router = express.Router();
 const { check } = require("express-validator");
 const path = require("path");
 const { asyncHandler, handleValidationErrors } = require("../utils");
-const { requireAuth } = require("../auth");
+const { requireAuth, verifyStatus } = require("../auth");
 
 const { renderBookshelf } = require('./bookshelf')
 const db = require("../db/models");
@@ -17,7 +17,7 @@ router.use(express.static(path.join("public")));
 //     res.json({ books })
 // }))
 
-router.get('/:id', asyncHandler(async (req, res) => {
+router.get('/:id', verifyStatus, asyncHandler(async (req, res) => {
     const bookId = parseInt(req.params.id, 10)
     const book = await db.Book.findByPk(bookId)
     const date = book.published.getFullYear().toString()
